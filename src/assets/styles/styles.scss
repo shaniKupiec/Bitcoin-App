@@ -1,0 +1,18 @@
+// SETUP
+@import 'setup/typography';
+@import 'setup/variables';
+@import 'setup/functions';
+@import 'setup/mixins';
+
+// BASICS
+@import 'basics/base';
+@import 'basics/layout';
+@import 'basics/helpers';
+
+//PAGES
+@import 'pages/contact-page';
+
+// COMPONENTS
+@import 'components/app-header';
+@import 'components/contact-list';
+@import 'components/contact-preview';
