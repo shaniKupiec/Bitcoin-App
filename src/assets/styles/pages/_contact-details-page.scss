@@ -1,0 +1,27 @@
+.contact-det {
+    @include flex();
+    gap: 20px;
+
+    .contact-det__img {
+        border-radius: 50%;
+        box-shadow: 0px 0px 10px 0px #00000012;
+        width: 400px;
+        transition: background-color 0.2s;
+    }
+
+    .details {
+        @include flex(column, center, flex-start);
+        font-size: rem(20px);
+
+        .details__icon{
+            margin-inline-end: 10px;
+            color: rgb(87, 87, 87);
+        }
+
+        
+    }
+
+    &:hover .contact-det__img {
+        background-color: rgba(207, 207, 207, 0.712);
+    }
+}

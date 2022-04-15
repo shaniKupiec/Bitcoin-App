@@ -11,7 +11,7 @@ export class ContactPage extends Component {
     this.loadContacts()
   }
 
-  async loadContacts() {
+  loadContacts = async() => {
     const contacts = await contactService.getContacts()
     this.setState({ contacts })
   }
@@ -21,7 +21,7 @@ export class ContactPage extends Component {
     return contacts ? (
       <section>
         ContactList
-        <ContactList contacts={contacts}/>
+        <ContactList contacts={contacts} changeCurrContact={this.props.changeCurrContact}/>
       </section>
     ) : (
       <div>Loading...</div>

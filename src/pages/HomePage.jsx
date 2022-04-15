@@ -13,12 +13,12 @@ export class HomePage extends Component {
     this.loadRate()
   }
 
-  async loadUser() {
+  loadUser = async() => {
     const user = userService.getUser()
     this.setState({ user })
   }
 
-  async loadRate() {
+  loadRate = async() => {
     const rate = await bitcoinService.getRate(1)
     this.setState({ rate })
   }
