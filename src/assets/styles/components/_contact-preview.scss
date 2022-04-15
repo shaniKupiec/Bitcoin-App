@@ -2,20 +2,55 @@
     @include flex(column);
     cursor: pointer;
     padding: 20px;
+    gap: 10px;
 
     .contact__img {
         border-radius: 50%;
         box-shadow: 0px 0px 10px 0px #00000012;
-        width: 200px;
-        transition: background-color .2s;
+        width: 100px;
+        transition: background-color 0.2s;
     }
 
     .contact__name {
-        margin-top: 10px;
         font-size: rem(20px);
     }
 
-    &:hover .contact__img{
+    &:hover .contact__img {
         background-color: rgba(207, 207, 207, 0.712);
     }
 }
+
+@media (max-width: $break-narrow) {
+    .contact {
+        @include flex(row, flex-start);
+        padding: 5px 20px;
+        width: 100%;
+        border-radius: 50px;
+        background-color: rgba(207, 207, 207, 0.712);
+
+        .contact__img {
+            width: 50px;
+        }
+
+        &:hover .contact__img {
+            background-color: rgba(207, 207, 207, 0);
+        }
+    }
+}
+
+@media (min-width: $break-normal) {
+    .contact {
+        .contact__img {
+            width: 150px;
+        }
+    }
+}
+
+@media (min-width: $break-wide) {
+    .contact {
+        .contact__img {
+            width: 200px;
+        }
+    }
+}
+

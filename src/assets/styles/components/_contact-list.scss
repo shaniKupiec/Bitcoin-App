@@ -3,3 +3,10 @@
     flex-wrap: wrap;
     gap: 20px;
 }
+
+@media (max-width: $break-narrow) {
+    .contact-list{
+        @include flex(column);
+        flex-wrap: nowrap;
+    }
+}

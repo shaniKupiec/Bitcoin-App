@@ -13,15 +13,22 @@
         @include flex(column, center, flex-start);
         font-size: rem(20px);
 
-        .details__icon{
+        .details__icon {
             margin-inline-end: 10px;
             color: rgb(87, 87, 87);
         }
-
-        
     }
 
     &:hover .contact-det__img {
         background-color: rgba(207, 207, 207, 0.712);
     }
+}
+
+@media (max-width: $break-narrow) {
+}
+
+@media (min-width: $break-normal) {
+}
+
+@media (min-width: $break-wide) {
 }
