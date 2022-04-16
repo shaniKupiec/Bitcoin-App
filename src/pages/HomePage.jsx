@@ -14,30 +14,42 @@ export class HomePage extends Component {
     this.loadRate()
   }
 
-  loadUser = async() => {
+  loadUser = async () => {
     const user = userService.getUser()
     this.setState({ user })
   }
 
-  loadRate = async() => {
-    const rate = await bitcoinService.getRate(1)
+  loadRate = async () => {
+    var rate = await bitcoinService.getRate(1)
+    rate = this.formatNum(rate)
     this.setState({ rate })
+  }
+
+  formatNum = (rate) => {
+    var formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    })
+    return formatter.format(Number.parseFloat(1 / +rate).toFixed(2))
   }
 
   render() {
     const { user, rate } = this.state
     if (!user || !rate) return <div>Loading...</div>
     return (
-      <section>
-        <div>
-          Hello {user.name}
-          you have {user.coins} USD available at the moment
+      <section className="home">
+        <div className="home__user">
+          <h1>Hello {user.name}</h1>
+          <h3>you have {user.coins} USD available at the moment</h3>
         </div>
-        <div>
+        <div className="home__bitcoin">
           Current Bitcoin rate:
-          <span>1 USD </span>
-          <span>{rate} bitcoin</span>
+          <div>
+            <span className="home__bitcoin__num">{rate}</span>
+            USD
+          </div>
         </div>
+        <img src="https://res.cloudinary.com/trellox/image/upload/v1650117242/82dbffed0f6d5ed95493e569ce8a35df-removebg-preview_sfcevu.png" alt="" />
       </section>
     )
   }

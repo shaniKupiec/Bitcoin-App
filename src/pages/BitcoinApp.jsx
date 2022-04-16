@@ -8,7 +8,7 @@ import { StatisticPage } from './StatisticPage'
 
 export default class BitcoinApp extends Component {
   state = {
-    currPage: 'contact',
+    currPage: 'home',
     currContactId: null,
   }
 

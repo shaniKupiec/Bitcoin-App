@@ -17,7 +17,7 @@ export class ContactFilter extends Component {
     const { txt } = this.state
     return (
       <section className="filter">
-        <i class="fa-solid fa-magnifying-glass filter"></i>
+        <i className="fa-solid fa-magnifying-glass filter"></i>
         <input type="text" className="filter__search" onChange={this.hangleChange} name="term" value={txt} placeholder="Search" />
       </section>
     )

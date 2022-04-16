@@ -1,0 +1,64 @@
+.edit-cmp {
+    @include flex(column);
+    padding: 40px;
+    gap: 20px;
+
+    &__btns {
+        @include flex(row, space-between);
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .contact-det {
+        @include flex();
+        gap: 60px;
+
+        &__img {
+            width: 200px;
+            border-radius: 50%;
+        }
+
+        .edit {
+            @include flex(column, space-evenly, flex-start);
+            font-size: rem(20px);
+            height: 100%;
+        }
+    }
+}
+
+@media (max-width: $break-narrow) {
+    .edit-cmp {
+        .contact-det {
+            flex-direction: column;
+            align-items: flex-start;
+
+            &__img {
+                width: 100px;
+            }
+
+            .edit {
+                padding-inline-start: 30px;
+            }
+        }
+    }
+}
+
+@media (min-width: $break-normal) {
+    .edit-cmp {
+        .contact-det {
+            &__img {
+                width: 250px;
+            }
+        }
+    }
+}
+
+@media (min-width: $break-wide) {
+    .edit-cmp {
+        .contact-det {
+            &__img {
+                width: 300px;
+            }
+        }
+    }
+}

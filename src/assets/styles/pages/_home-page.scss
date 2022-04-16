@@ -1,0 +1,11 @@
+.home{
+    padding: 40px;
+
+    &__bitcoin{
+        margin-top: 20px;
+
+        &__num{
+            font-size: rem(50px);
+        }
+    }
+}

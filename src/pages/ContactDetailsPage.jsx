@@ -20,15 +20,14 @@ export class ContactDetailsPage extends Component {
     return contact ? (
       <section className='details-cmp'>
         <div className="details-cmp__btns">
-          <i class="fa-solid fa-circle-arrow-left" title="Back"></i>
-          <i class="fa-solid fa-pen-to-square" title="Edit"></i>
-          {/* <i class="fa-solid fa-trash" title="Remove"></i> */}
+          <i className="fa-solid fa-circle-arrow-left" title="Back"></i>
+          <i className="fa-solid fa-pen-to-square" title="Edit"></i>
         </div>
         <section className="contact-det">
           <img src={`https://robohash.org/set_set5/${contact._id}.png`} alt="" className="contact-det__img" />
           <section className="details">
             <div className="details__name">
-              <i class="fa-solid fa-id-card details__icon"></i>
+              <i className="fa-solid fa-id-card details__icon"></i>
               {contact.name}
             </div>
             <div className="details__email">
