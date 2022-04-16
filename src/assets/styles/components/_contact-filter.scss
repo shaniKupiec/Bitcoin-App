@@ -19,7 +19,7 @@
 @media (max-width: $break-narrow) {
     .filter {
         &__search {
-            width: 100%;
+            width: calc(100% - 56px);;
         }
     }
     

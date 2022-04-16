@@ -1,12 +1,9 @@
 .contact-det {
     @include flex();
-    gap: 20px;
+    gap: 50px;
 
     &__img {
-        border-radius: 50%;
-        box-shadow: 0px 0px 10px 0px #00000012;
-        width: 400px;
-        transition: background-color 0.2s;
+        width: 300px;
     }
 
     .details {
@@ -14,21 +11,47 @@
         font-size: rem(20px);
 
         .details__icon {
-            margin-inline-end: 10px;
             color: rgb(87, 87, 87);
+            position: absolute;
+            left: -31px;
+            top: 3px;
+            cursor: pointer;
         }
-    }
 
-    &:hover &__img {
-        background-color: rgba(207, 207, 207, 0.712);
+        .details__name,
+        .details__email,
+        .details__phone {
+            position: relative;
+        }
     }
 }
 
 @media (max-width: $break-narrow) {
+    .contact-det {
+        flex-direction: column;
+
+        &__img {
+            width: 200px;
+        }
+
+        .details {
+            padding-inline-start: 30px;
+        }
+    }
 }
 
 @media (min-width: $break-normal) {
+    .contact-det {
+        &__img {
+            width: 350px;
+        }
+    }
 }
 
 @media (min-width: $break-wide) {
+    .contact-det {
+        &__img {
+            width: 400px;
+        }
+    }
 }

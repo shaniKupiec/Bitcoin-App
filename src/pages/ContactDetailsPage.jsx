@@ -10,7 +10,7 @@ export class ContactDetailsPage extends Component {
     this.loadContact()
   }
 
-  loadContact = async() => {
+  loadContact = async () => {
     const contact = await contactService.getContactById(this.props.contactId)
     this.setState({ contact })
   }
@@ -23,7 +23,7 @@ export class ContactDetailsPage extends Component {
         <section className="details">
           <div className="details__name">{contact.name}</div>
           <div className="details__email">
-          <i className="fa-solid fa-envelope details__icon"></i>
+            <i className="fa-solid fa-envelope details__icon"></i>
             {contact.email}
           </div>
           <div className="details__phone">
