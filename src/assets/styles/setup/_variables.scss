@@ -1,4 +1,11 @@
 // COLORS
+// primary
+$clr1: #ffffff;
+$clr2: grey;
+
+// secondary
+$shadowClr: #00000012;
+$hoverClr: lighten($clr2, 20%);
 
 // // LAYOUT
 $layoutPadding: 20px;

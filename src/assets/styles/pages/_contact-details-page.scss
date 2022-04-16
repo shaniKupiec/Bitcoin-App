@@ -1,57 +1,78 @@
-.contact-det {
-    @include flex();
-    gap: 50px;
+.details-cmp {
+    @include flex(column);
+    padding: 40px;
+    gap: 20px;
 
-    &__img {
-        width: 300px;
+    &__btns {
+        @include flex(row, space-between);
+        width: 100%;
+        cursor: pointer;
     }
 
-    .details {
-        @include flex(column, center, flex-start);
-        font-size: rem(20px);
+    .contact-det {
+        @include flex();
+        gap: 60px;
 
-        .details__icon {
-            color: rgb(87, 87, 87);
-            position: absolute;
-            left: -31px;
-            top: 3px;
-            cursor: pointer;
+        &__img {
+            width: 200px;
+            border-radius: 50%;
         }
 
-        .details__name,
-        .details__email,
-        .details__phone {
-            position: relative;
+        .details {
+            @include flex(column, space-evenly, flex-start);
+            font-size: rem(20px);
+            height: 100%;
+
+            .details__icon {
+                color: $hoverClr;
+                position: absolute;
+                left: -40px;
+                top: 3px;
+                cursor: pointer;
+            }
+
+            .details__name,
+            .details__email,
+            .details__phone {
+                position: relative;
+            }
         }
     }
 }
 
 @media (max-width: $break-narrow) {
-    .contact-det {
-        flex-direction: column;
+    .details-cmp {
+        .contact-det {
+            flex-direction: column;
+            align-items: flex-start;
 
-        &__img {
-            width: 200px;
-        }
+            &__img {
+                width: 100px;
+            }
 
-        .details {
-            padding-inline-start: 30px;
+            .details {
+                padding-inline-start: 30px;
+            }
         }
     }
 }
 
 @media (min-width: $break-normal) {
-    .contact-det {
-        &__img {
-            width: 350px;
+    .details-cmp {
+        .contact-det {
+            &__img {
+                width: 250px;
+            }
         }
     }
 }
 
 @media (min-width: $break-wide) {
-    .contact-det {
-        &__img {
-            width: 400px;
+    .details-cmp {
+        .contact-det {
+            &__img {
+                width: 300px;
+            }
         }
     }
 }

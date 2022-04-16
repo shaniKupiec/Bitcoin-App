@@ -29,10 +29,9 @@ export class HomePage extends Component {
     if (!user || !rate) return <div>Loading...</div>
     return (
       <section>
-        <h1>HomePage</h1>
         <div>
-          {user.name}
-          {user.coins}
+          Hello {user.name}
+          you have {user.coins} USD available at the moment
         </div>
         <div>
           Current Bitcoin rate:

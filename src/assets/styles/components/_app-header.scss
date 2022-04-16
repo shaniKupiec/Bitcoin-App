@@ -1,3 +1,10 @@
-.app-header{
-    
+header {
+    @include flex(row, space-evenly);
+    padding: 25px;
+    box-shadow: 0px 5px 0px 0px $clr1;
+
+    .header__icon {
+        font-size: rem(25px);
+        cursor: pointer;
+    }
 }
