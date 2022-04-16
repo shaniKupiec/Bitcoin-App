@@ -5,6 +5,7 @@ export function AppHeader({changePage}) {
     <header>
       <button onClick={() => changePage('home')}>Home</button>
       <button onClick={() => changePage('contact')}>Contact</button>
+      <button onClick={() => changePage('static')}>Charts</button>
     </header>
   )
 }

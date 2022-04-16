@@ -4,6 +4,7 @@ import { AppHeader } from '../components/AppHeader'
 import { HomePage } from './HomePage'
 import { ContactPage } from './ContactPage'
 import { ContactDetailsPage } from './ContactDetailsPage'
+import { StatisticPage } from './StatisticPage'
 
 export default class BitcoinApp extends Component {
   state = {
@@ -27,6 +28,8 @@ export default class BitcoinApp extends Component {
         return <ContactPage changeCurrContact={this.changeCurrContact} />
       case 'details':
         return <ContactDetailsPage contactId={this.state.currContactId} />
+      case 'static':
+        return <StatisticPage />
       default:
         return <HomePage />
     }
