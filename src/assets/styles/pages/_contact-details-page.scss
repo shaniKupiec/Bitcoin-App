@@ -2,7 +2,7 @@
     @include flex();
     gap: 20px;
 
-    .contact-det__img {
+    &__img {
         border-radius: 50%;
         box-shadow: 0px 0px 10px 0px #00000012;
         width: 400px;
@@ -19,7 +19,7 @@
         }
     }
 
-    &:hover .contact-det__img {
+    &:hover &__img {
         background-color: rgba(207, 207, 207, 0.712);
     }
 }

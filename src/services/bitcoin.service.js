@@ -9,9 +9,11 @@ export default {
 
 const RATE_KEY = 'bitcion-rate'
 const MARKET_PRICE_KEY = 'bitcion-market-price'
+const CONF_TRANS_KEY = 'confirmed-transactions'
 
 var gRateCache = storageService.loadFromStorage(RATE_KEY) || null
 var gMarketPriceCache = storageService.loadFromStorage(MARKET_PRICE_KEY) || []
+var gConfirmedTransactionsCache = storageService.loadFromStorage(CONF_TRANS_KEY) || []
 
 const currency = 'USD'
 
@@ -51,4 +53,19 @@ async function getMarketPrice() {
   }
 }
 
-function getConfirmedTransactions() {}
+async function getConfirmedTransactions() {
+  if (gConfirmedTransactionsCache.length) {
+    return new Promise((resolve) => resolve(gConfirmedTransactionsCache))
+  }
+  const getgConfirmedTransactionsUrl = `https://api.blockchain.info/charts/trade-volume?timespan=1months&format=json&cors=true`
+  try {
+    var res = await axios.get(getgConfirmedTransactionsUrl)
+    res = res.data.values
+    gConfirmedTransactionsCache = res
+    storageService.saveToStorage(CONF_TRANS_KEY, gConfirmedTransactionsCache)
+    return res
+  } catch (err) {
+    console.log(err)
+    throw err
+  }
+}
