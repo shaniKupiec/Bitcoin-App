@@ -1,4 +1,6 @@
 import { Component } from 'react'
+import { Link } from 'react-router-dom'
+
 import contactService from '../services/contact.service'
 
 export class ContactDetailsPage extends Component {
@@ -10,18 +12,30 @@ export class ContactDetailsPage extends Component {
     this.loadContact()
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      this.loadContact()
+    }
+  }
+
   loadContact = async () => {
-    const contact = await contactService.getContactById(this.props.contactId)
+    const contact = await contactService.getContactById(this.props.match.params.id)
     this.setState({ contact })
+  }
+
+  onBack = () => {
+    this.props.history.push('/contact')
   }
 
   render() {
     const { contact } = this.state
     return contact ? (
-      <section className='details-cmp'>
+      <section className="details-cmp">
         <div className="details-cmp__btns">
-          <i className="fa-solid fa-circle-arrow-left" title="Back"></i>
-          <i className="fa-solid fa-pen-to-square" title="Edit"></i>
+          <i className="fa-solid fa-circle-arrow-left" title="Back" onClick={this.onBack}></i>
+          <Link to={`/contact/edit/${contact._id}`}>
+            <i className="fa-solid fa-pen-to-square" title="Edit"></i>
+          </Link>
         </div>
         <section className="contact-det">
           <img src={`https://robohash.org/set_set5/${contact._id}.png`} alt="" className="contact-det__img" />
