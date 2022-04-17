@@ -22,6 +22,19 @@
             @include flex(column, space-evenly, flex-start);
             font-size: rem(20px);
             height: 100%;
+
+            &__row {
+                display: flex;
+                flex-direction: column;
+                input {
+                    margin-inline-start: 10px;
+                    width: 200px;
+                }
+            }
+
+            &__save {
+                align-self: flex-end;
+            }
         }
     }
 }
@@ -48,6 +61,15 @@
         .contact-det {
             &__img {
                 width: 250px;
+            }
+
+            .edit {
+                &__row {
+                    flex-direction: row;
+                    input {
+                        width: 300px;
+                    }
+                }
             }
         }
     }

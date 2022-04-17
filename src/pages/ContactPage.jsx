@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 import { ContactFilter } from '../components/ContactFilter'
 import { ContactList } from '../components/ContactList'
@@ -21,13 +22,29 @@ export class ContactPage extends Component {
 
   render() {
     const { contacts } = this.state
-    return contacts ? (
+    if (!contacts) return <div>Loading...</div>
+    // if (!contacts.length) return <div>No contacts found</div>
+    return (
       <>
         <ContactFilter onChangeFilter={this.loadContacts} />
-        <ContactList contacts={contacts} changeCurrContact={this.props.changeCurrContact} />
+        <ContactList contacts={contacts} />
+        <Link className='add-btn' to="/contact/edit/">+</Link>
+        {/* history={this.props.history} */}
       </>
-    ) : (
-      <div>Loading...</div>
     )
   }
 }
+// {
+//   !contacts && <div>Loading...</div>
+// }
+// {
+//   !contacts.length && <div>No contacts found</div>
+// }
+// {
+//   contacts.length && (
+//     <>
+//       <ContactFilter onChangeFilter={this.loadContacts} />
+//       <ContactList contacts={contacts}/>
+//     </>
+//   )
+// }
