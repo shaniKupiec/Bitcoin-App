@@ -2,7 +2,7 @@
   "name": "bitcoin-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://shaniKupiec.github.io",
+  "homepage": "https://shaniKupiec.github.io/Bitcoin-App",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.0.1",

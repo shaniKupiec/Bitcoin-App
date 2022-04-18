@@ -9,15 +9,20 @@ import contactService from '../services/contact.service'
 export class ContactPage extends Component {
   state = {
     contacts: null,
+    filterBy: null,
   }
 
   componentDidMount() {
     this.loadContacts()
   }
 
-  loadContacts = async (filterBy = {}) => {
-    const contacts = await contactService.getContacts(filterBy)
+  loadContacts = async () => {
+    const contacts = await contactService.getContacts(this.state.filterBy)
     this.setState({ contacts })
+  }
+
+  onChangeFilter = (filterBy) => {
+    this.setState({ filterBy }, this.loadContacts)
   }
 
   render() {
@@ -26,9 +31,11 @@ export class ContactPage extends Component {
     // if (!contacts.length) return <div>No contacts found</div>
     return (
       <>
-        <ContactFilter onChangeFilter={this.loadContacts} />
+        <ContactFilter onChangeFilter={this.onChangeFilter} />
         <ContactList contacts={contacts} />
-        <Link className='add-btn' to="/contact/edit/">+</Link>
+        <Link className="add-btn" to="/contact/edit/">
+          +
+        </Link>
         {/* history={this.props.history} */}
       </>
     )
