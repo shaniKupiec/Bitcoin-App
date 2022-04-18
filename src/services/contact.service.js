@@ -1,9 +1,9 @@
 export default {
   query,
-  getContactById,
+  getById,
   remove,
-  saveContact,
-  getEmptyContact
+  save,
+  getEmpty
 }
 
 const contacts = [
@@ -147,7 +147,7 @@ function query(filterBy = null) {
   })
 }
 
-function getContactById(id) {
+function getById(id) {
   return new Promise((resolve, reject) => {
     const contact = contacts.find(contact => contact._id === id)
     contact ? resolve(contact) : reject(`Contact id ${id} not found!`)
@@ -182,11 +182,11 @@ function _addContact(contact) {
   })
 }
 
-function saveContact(contact) {
+function save(contact) {
   return contact._id ? _updateContact(contact) : _addContact(contact)
 }
 
-function getEmptyContact() {
+function getEmpty() {
   return {
     name: '',
     email: '',

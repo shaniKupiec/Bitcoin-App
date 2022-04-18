@@ -1,4 +1,4 @@
-import { contactService } from '../../services/contact.service'
+import contactService from '../../services/contact.service'
 
 export function loadContacts() {
   return async (dispatch, getState) => {
@@ -6,6 +6,17 @@ export function loadContacts() {
       const { filterBy } = getState().contactModule //?
       const contacts = await contactService.query(filterBy)
       dispatch({ type: 'SET_CONTACTS', contacts })
+    } catch (err) {
+      console.log('err:', err)
+    }
+  }
+}
+
+export function saveContact(contact) {
+  return async (dispatch) => {
+    try {
+      await contactService.save(contact)
+      contact._id ? dispatch({ type: 'UPDATE_CONTACT', contact }) : dispatch({ type: 'ADD_CONTACT', contact })
     } catch (err) {
       console.log('err:', err)
     }

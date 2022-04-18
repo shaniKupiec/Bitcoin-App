@@ -1,8 +1,10 @@
 import { Component } from 'react'
+import { connect } from 'react-redux'
 
 import contactService from '../services/contact.service'
+import { removeContact, saveContact } from '../store/actions/contactActions'
 
-export class ContactEditPage extends Component {
+export class _ContactEditPage extends Component {
   state = {
     contact: null,
   }
@@ -18,8 +20,8 @@ export class ContactEditPage extends Component {
   }
 
   loadContact = async () => {
-    console.log('this.props.match.params.id',this.props.match.params.id)
-    const contact = this.props.match.params.id ? await contactService.getContactById(this.props.match.params.id) : contactService.getEmptyContact()
+    // console.log('this.props.match.params.id',this.props.match.params.id)
+    const contact = this.props.match.params.id ? await contactService.getById(this.props.match.params.id) : contactService.getEmpty()
     this.setState({ contact })
   }
 
@@ -29,13 +31,14 @@ export class ContactEditPage extends Component {
     this.setState((prevState) => ({ contact: { ...prevState.contact, [field]: value } }))
   }
 
-  save = async () => {
-    const contact = await contactService.saveContact(this.state.contact)
-    this.setState({ contact }, () => this.onBack())
+  onSave = async (ev) => {
+    ev.preventDefault()
+    this.props.saveContact(this.state.contact)
+    this.onBack()
   }
 
-  onRemove = () => {
-    contactService.remove(this.state.contact._id)
+  onRemove = async () => {
+    this.props.removeContact(this.state.contact._id)
     this.onBack(false)
   }
 
@@ -53,7 +56,7 @@ export class ContactEditPage extends Component {
         </div>
         <section className="contact-det">
           <img src={`https://robohash.org/set_set5/${contact._id}.png`} alt="" className="contact-det__img" />
-          <form className="edit">
+          <form className="edit" onSubmit={this.onSave}>
             <span className="edit__row">
               <label htmlFor="name">Name:</label>
               <input type="text" id="name" onChange={this.hangleChange} name="name" value={contact.name} />
@@ -69,7 +72,7 @@ export class ContactEditPage extends Component {
               <input type="tel" id="phone" onChange={this.hangleChange} name="phone" value={contact.phone} />
             </span>
 
-            <button className="edit__save" onClick={this.save}>
+            <button className="edit__save">
               Save
             </button>
           </form>
@@ -80,3 +83,15 @@ export class ContactEditPage extends Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+  }
+}
+
+const mapDispatchToProps = {
+  removeContact,
+  saveContact,
+}
+
+export const ContactEditPage = connect(mapStateToProps, mapDispatchToProps)(_ContactEditPage)

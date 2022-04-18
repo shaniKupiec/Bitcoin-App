@@ -1,58 +1,48 @@
 import { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import { ContactFilter } from '../components/ContactFilter'
 import { ContactList } from '../components/ContactList'
 
-import contactService from '../services/contact.service'
+import { loadContacts, setFilterBy } from '../store/actions/contactActions'
 
-export class ContactPage extends Component {
-  state = {
-    contacts: null,
-    filterBy: null,
-  }
-
+export class _ContactPage extends Component {
   componentDidMount() {
-    this.loadContacts()
+    this.props.loadContacts()
   }
 
-  loadContacts = async () => {
-    const contacts = await contactService.query(this.state.filterBy)
-    this.setState({ contacts })
-  }
-
-  onChangeFilter = (filterBy) => {
-    this.setState({ filterBy }, this.loadContacts)
+  onChangeFilter = async (filterBy) => {
+    await this.props.setFilterBy(filterBy)
+    this.props.loadContacts()
   }
 
   render() {
-    const { contacts } = this.state
+    const { contacts } = this.props
     if (!contacts) return <div>Loading...</div>
     // if (!contacts.length) return <div>No contacts found</div>
     return (
       <>
-        <ContactFilter onChangeFilter={this.onChangeFilter} />
+        <ContactFilter onChangeFilter={this.onChangeFilter} filterBy={this.props.filterBy} />
         <ContactList contacts={contacts} />
         <Link className="add-btn" to="/contact/edit/">
           +
         </Link>
-        {/* history={this.props.history} */}
       </>
     )
   }
 }
 
-// const mapStateToProps = state => {
-//   return {
-//       robots: state.robotModule.robots
-//   }
-// }
+const mapStateToProps = (state) => {
+  return {
+    contacts: state.contactModule.contacts,
+    filterBy: state.contactModule.filterBy,
+  }
+}
 
-// const mapDispatchToProps = {
-//   loadRobots,
-//   removeRobot,
-//   setFilterBy,
-//   spendBalance
-// }
+const mapDispatchToProps = {
+  loadContacts,
+  setFilterBy,
+}
 
-// export const RobotApp = connect(mapStateToProps, mapDispatchToProps)(_RobotApp)
+export const ContactPage = connect(mapStateToProps, mapDispatchToProps)(_ContactPage)

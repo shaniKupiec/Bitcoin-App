@@ -1,7 +1,9 @@
 import { Component } from 'react'
 import { Link } from 'react-router-dom'
+// import { connect } from 'react-redux'
 
 import contactService from '../services/contact.service'
+// import { loadContacts, setFilterBy } from '../store/actions/contactActions'
 
 export class ContactDetailsPage extends Component {
   state = {
@@ -19,7 +21,7 @@ export class ContactDetailsPage extends Component {
   }
 
   loadContact = async () => {
-    const contact = await contactService.getContactById(this.props.match.params.id)
+    const contact = await contactService.getById(this.props.match.params.id)
     this.setState({ contact })
   }
 
@@ -63,15 +65,12 @@ export class ContactDetailsPage extends Component {
 
 // const mapStateToProps = state => {
 //   return {
-//       robots: state.robotModule.robots
+//     contacts: state.contactModule.contacts
 //   }
 // }
 
 // const mapDispatchToProps = {
-//   loadRobots,
-//   removeRobot,
-//   setFilterBy,
-//   spendBalance
+//   loadContact,
 // }
 
 // export const RobotApp = connect(mapStateToProps, mapDispatchToProps)(_RobotApp)

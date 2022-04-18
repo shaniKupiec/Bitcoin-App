@@ -2,7 +2,7 @@ import { Component } from 'react'
 
 export class ContactFilter extends Component {
   state = {
-    term: '',
+    term: this.props.filterBy?.term || '',
   }
 
   hangleChange = ({ target }) => {
@@ -14,11 +14,11 @@ export class ContactFilter extends Component {
   }
 
   render() {
-    const { txt } = this.state
+    const { term } = this.state
     return (
       <section className="filter">
         <i className="fa-solid fa-magnifying-glass filter"></i>
-        <input type="text" className="filter__search" onChange={this.hangleChange} name="term" value={txt} placeholder="Search" />
+        <input type="text" className="filter__search" onChange={this.hangleChange} name="term" value={term} placeholder="Search" />
       </section>
     )
   }
