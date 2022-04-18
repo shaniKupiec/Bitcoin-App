@@ -45,4 +45,19 @@ function signup(userName) {
   storageService.saveToStorage(LOGGEDIN_USER_KEY, gLoggedinUser)
 }
 
-function addMove(contact, amount) {}
+function addMove(contact, amount) {
+  const move = {
+    toId: contact._id,
+    to: contact.name,
+    at: Date.now(),
+    amount,
+  }
+  gLoggedinUser.coins -= amount
+  gLoggedinUser.moves.push(move)
+
+  const idx = gUsers.findIndex((u) => u.name === gLoggedinUser.name)
+  gUsers[idx] = gLoggedinUser
+
+  storageService.saveToStorage(USER_KEY, gUsers)
+  storageService.saveToStorage(LOGGEDIN_USER_KEY, gLoggedinUser)
+}
