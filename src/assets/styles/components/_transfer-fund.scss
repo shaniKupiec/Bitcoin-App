@@ -5,6 +5,10 @@
     margin-top: 20px;
     font-size: rem(20px);
 
+    &__title {
+        margin-bottom: 10px;
+    }
+
     &__form {
         position: relative;
 
@@ -12,7 +16,7 @@
             background: none;
             border: 0px;
             color: white;
-            box-shadow: 0px 1px 0px 0px #ffffff;
+            box-shadow: 0px 1px 0px 0px $clr1;
             width: 60px;
             margin-inline-start: 5px;
         }
@@ -22,9 +26,19 @@
             position: absolute;
             right: 0;
             &.disable {
-                background-color: #5579af;
+                background-color: $blueClr;
                 cursor: not-allowed;
             }
         }
     }
+}
+
+@media (max-width: $break-narrow) {
+}
+
+
+@media (min-width: $break-normal) {
+}
+
+@media (min-width: $break-wide) {
 }

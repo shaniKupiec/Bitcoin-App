@@ -1,5 +1,7 @@
 import { Component } from 'react'
 
+import { MoveList } from '../components/MoveList'
+
 import userService from '../services/user.service'
 import bitcoinService from '../services/bitcoin.service'
 
@@ -50,6 +52,7 @@ export class HomePage extends Component {
           </div>
         </div>
         <img src="https://res.cloudinary.com/trellox/image/upload/v1650117242/82dbffed0f6d5ed95493e569ce8a35df-removebg-preview_sfcevu.png" alt="" />
+        <MoveList movesList={user.moves} title="My Moves" />
       </section>
     )
   }

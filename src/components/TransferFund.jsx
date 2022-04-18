@@ -12,7 +12,7 @@ export class TransferFund extends Component {
   }
 
   onTransferCoins = () => {
-    this.props.onTransferCoins(this.state)
+    this.props.onTransferCoins(this.state.amount)
   }
 
   render() {
@@ -22,7 +22,7 @@ export class TransferFund extends Component {
     console.log('className',className)
     return (
       <section className="trans">
-        <div>Transfer coins to {this.props.contact.name}:</div>
+        <div className='trans__title'>Transfer coins to {this.props.contact.name}:</div>
         <div className="trans__form">
           <label htmlFor="amount">Amount:</label>
           <input type="number" min="0" max={this.props.maxCoins} onChange={this.hangleChange} id="amount" name="amount" value={amount} />
