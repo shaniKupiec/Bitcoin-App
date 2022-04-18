@@ -15,7 +15,7 @@ export class HomePage extends Component {
   }
 
   loadUser = async () => {
-    const user = userService.getUser()
+    const user = userService.getLoggedInUser()
     this.setState({ user })
   }
 
