@@ -60,3 +60,18 @@ export class ContactDetailsPage extends Component {
     )
   }
 }
+
+// const mapStateToProps = state => {
+//   return {
+//       robots: state.robotModule.robots
+//   }
+// }
+
+// const mapDispatchToProps = {
+//   loadRobots,
+//   removeRobot,
+//   setFilterBy,
+//   spendBalance
+// }
+
+// export const RobotApp = connect(mapStateToProps, mapDispatchToProps)(_RobotApp)

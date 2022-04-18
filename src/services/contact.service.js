@@ -1,7 +1,7 @@
 export default {
-  getContacts,
+  query,
   getContactById,
-  deleteContact,
+  remove,
   saveContact,
   getEmptyContact
 }
@@ -137,7 +137,7 @@ function sort(arr) {
   })
 }
 
-function getContacts(filterBy = null) {
+function query(filterBy = null) {
   return new Promise((resolve, reject) => {
     var contactsToReturn = contacts;
     if (filterBy && filterBy.term) {
@@ -154,7 +154,7 @@ function getContactById(id) {
   })
 }
 
-function deleteContact(id) {
+function remove(id) {
   return new Promise((resolve, reject) => {
     const index = contacts.findIndex(contact => contact._id === id)
     if (index !== -1) {

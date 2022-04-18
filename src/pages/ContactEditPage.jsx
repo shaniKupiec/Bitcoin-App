@@ -35,7 +35,7 @@ export class ContactEditPage extends Component {
   }
 
   onRemove = () => {
-    contactService.deleteContact(this.state.contact._id)
+    contactService.remove(this.state.contact._id)
     this.onBack(false)
   }
 

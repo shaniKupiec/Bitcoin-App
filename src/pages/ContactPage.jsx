@@ -17,7 +17,7 @@ export class ContactPage extends Component {
   }
 
   loadContacts = async () => {
-    const contacts = await contactService.getContacts(this.state.filterBy)
+    const contacts = await contactService.query(this.state.filterBy)
     this.setState({ contacts })
   }
 
@@ -41,17 +41,18 @@ export class ContactPage extends Component {
     )
   }
 }
-// {
-//   !contacts && <div>Loading...</div>
+
+// const mapStateToProps = state => {
+//   return {
+//       robots: state.robotModule.robots
+//   }
 // }
-// {
-//   !contacts.length && <div>No contacts found</div>
+
+// const mapDispatchToProps = {
+//   loadRobots,
+//   removeRobot,
+//   setFilterBy,
+//   spendBalance
 // }
-// {
-//   contacts.length && (
-//     <>
-//       <ContactFilter onChangeFilter={this.loadContacts} />
-//       <ContactList contacts={contacts}/>
-//     </>
-//   )
-// }
+
+// export const RobotApp = connect(mapStateToProps, mapDispatchToProps)(_RobotApp)
