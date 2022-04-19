@@ -1,19 +1,20 @@
-.move-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: grey;
+.moves {
+    background-color: $clr2;
     margin: 20px;
+    padding: 20px;
     border-radius: 25px;
-    .title {
+    &__title {
         font-size: 18px;
         margin-bottom: 10px;
     }
-    li {
-        margin-bottom: 10px;
-        border-bottom: 2px solid rgb(230, 218, 218);
-        .item {
-            display: block;
+
+    &__list {
+        &__item {
+            margin-bottom: 10px;
+            border-bottom: 2px solid rgb(230, 218, 218);
+            span {
+                display: block;
+            }
         }
     }
 }

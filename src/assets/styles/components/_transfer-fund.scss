@@ -34,8 +34,14 @@
 }
 
 @media (max-width: $break-narrow) {
+    .trans {
+        &__form {
+            button {
+                position: relative;
+            }
+        }
+    }
 }
-
 
 @media (min-width: $break-normal) {
 }

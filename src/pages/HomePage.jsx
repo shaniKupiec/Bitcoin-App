@@ -51,7 +51,7 @@ export class HomePage extends Component {
             USD
           </div>
         </div>
-        <img src="https://res.cloudinary.com/trellox/image/upload/v1650117242/82dbffed0f6d5ed95493e569ce8a35df-removebg-preview_sfcevu.png" alt="" />
+        {/* <img src="https://res.cloudinary.com/trellox/image/upload/v1650117242/82dbffed0f6d5ed95493e569ce8a35df-removebg-preview_sfcevu.png" alt="" /> */}
         <MoveList movesList={user.moves} title="My Moves" />
       </section>
     )

@@ -1,29 +1,17 @@
 import React from 'react'
 
 export function MoveList({ title, movesList }) {
+    
   return (
-    <section className="move-list">
-      <span className="title">{title}</span>
+    <section className="moves">
+      <span className="moves__title">{title}</span>
       {console.log('movesList', movesList)}
-      <ul>
+      <ul className="moves__list clean-list">
         {movesList.map((move) => (
-          <li key={move.at}>
-            <span className="item">
-              <span>to:</span>
-              <span>{move.to}</span>
-            </span>
-            <span className="item">
-              <span>to id:</span>
-              <span>{move.toId}</span>
-            </span>
-            <span className="item">
-              <span>at:</span>
-              <span>{move.at}</span>
-            </span>
-            <span className="item">
-              <span>amount:</span>
-              <span>{move.amount}</span>
-            </span>
+          <li key={move.at} className="moves__list__item">
+            <span>to: {move.to}</span>
+            <span>to: {move.at}</span>
+            <span>amount: {move.amount}</span>
           </li>
         ))}
       </ul>
