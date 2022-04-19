@@ -7,10 +7,10 @@ export default {
 }
 
 const USER_KEY = 'user'
-const LOGGEDIN_USER_KEY = 'loggedinUser'
+const LOGGEDIN_USER_KEY = 'loggedInUser'
 
 var gUsers = storageService.loadFromStorage(USER_KEY)
-var gLoggedinUser = storageService.loadFromStorage(LOGGEDIN_USER_KEY) || null
+var gLoggedInUser = storageService.loadFromStorage(LOGGEDIN_USER_KEY) || null
 loadUsers()
 
 function loadUsers() {
@@ -27,7 +27,7 @@ function loadUsers() {
 }
 
 function getLoggedInUser() {
-  return gLoggedinUser
+  return gLoggedInUser
 }
 
 function signup(userName) {
@@ -41,8 +41,8 @@ function signup(userName) {
     gUsers.push(user)
     storageService.saveToStorage(USER_KEY, gUsers)
   }
-  gLoggedinUser = user
-  storageService.saveToStorage(LOGGEDIN_USER_KEY, gLoggedinUser)
+  gLoggedInUser = user
+  storageService.saveToStorage(LOGGEDIN_USER_KEY, gLoggedInUser)
 }
 
 function addMove(contact, amount) {
@@ -52,12 +52,12 @@ function addMove(contact, amount) {
     at: Date.now(),
     amount,
   }
-  gLoggedinUser.coins -= amount
-  gLoggedinUser.moves.push(move)
+  gLoggedInUser.coins -= amount
+  gLoggedInUser.moves.push(move)
 
-  const idx = gUsers.findIndex((u) => u.name === gLoggedinUser.name)
-  gUsers[idx] = gLoggedinUser
+  const idx = gUsers.findIndex((u) => u.name === gLoggedInUser.name)
+  gUsers[idx] = gLoggedInUser
 
   storageService.saveToStorage(USER_KEY, gUsers)
-  storageService.saveToStorage(LOGGEDIN_USER_KEY, gLoggedinUser)
+  storageService.saveToStorage(LOGGEDIN_USER_KEY, gLoggedInUser)
 }

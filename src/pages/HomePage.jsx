@@ -1,4 +1,6 @@
 import { Component } from 'react'
+import Lottie from 'react-lottie'
+import animationData from '../assets/animations/bitcoin.json'
 
 import { MoveList } from '../components/MoveList'
 
@@ -35,6 +37,14 @@ export class HomePage extends Component {
     return formatter.format(Number.parseFloat(1 / +rate).toFixed(2))
   }
 
+  get defaultOptions() {
+    return {
+      loop: true,
+      autoplay: true,
+      animationData,
+    }
+  }
+
   render() {
     const { user, rate } = this.state
     if (!user || !rate) return <div>Loading...</div>
@@ -53,6 +63,7 @@ export class HomePage extends Component {
         </div>
         {/* <img src="https://res.cloudinary.com/trellox/image/upload/v1650117242/82dbffed0f6d5ed95493e569ce8a35df-removebg-preview_sfcevu.png" alt="" /> */}
         <MoveList movesList={user.moves} title="My Moves" />
+        <Lottie options={this.defaultOptions} height={600} width={750} />
       </section>
     )
   }

@@ -25,7 +25,7 @@ export default class BitcoinApp extends Component {
           <this.PrivateRoute path="/contact/edit/:id?" component={ContactEditPage} />
           <this.PrivateRoute path="/contact/:id" component={ContactDetailsPage} />
           <Route path="/contact" component={ContactPage} />
-          <Route path="/statistic" component={StatisticPage} />
+          <Route path="/chart" component={StatisticPage} />
           <Route path="/signup" component={SignupPage} />
           <this.PrivateRoute path="/" component={HomePage} />
         </Switch>

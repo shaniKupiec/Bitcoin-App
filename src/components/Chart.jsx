@@ -22,7 +22,7 @@ export class Chart extends Component {
     })
     this.setState({ MPdata: newData })
   }
-  
+
   loadDataConfirmedTransactions = async () => {
     const data = await bitcoinService.getConfirmedTransactions()
     var newData = []
@@ -38,33 +38,27 @@ export class Chart extends Component {
     const { title, data, description, color } = this.props
     if (!MPdata || !CTdata) return <div>Loading...</div>
     return (
-      <div>
-        <section>
-          {data === 'marketprice' && (
-            <div>
-              <h1>{title}</h1>
-              <h4>{description}</h4>
-              <section>
-                <Sparklines data={MPdata} margin={6}>
-                  <SparklinesLine style={{ strokeWidth: 3, stroke: '#336aff', fill: { color } }} />
-                  <SparklinesSpots size={4} style={{ stroke: '#336aff', strokeWidth: 3, fill: { color } }} />
-                </Sparklines>
-              </section>
-            </div>
-          )}
-          {data === 'confirmedtransactions' && (
-            <div>
-              <h1>{title}</h1>
-              <h4>{description}</h4>
-              <section>
-                <Sparklines data={CTdata}>
-                  <SparklinesBars color={color} />
-                </Sparklines>
-              </section>
-            </div>
-          )}
-        </section>
-      </div>
+      <section>
+        {data === 'marketPrice' && (
+          <div className="cart">
+            <h1>{title}</h1>
+            <h4>{description}</h4>
+            <Sparklines data={MPdata} margin={6}>
+              <SparklinesLine style={{ strokeWidth: 3, stroke: '#336aff', fill: { color } }} />
+              <SparklinesSpots size={4} style={{ stroke: '#336aff', strokeWidth: 3, fill: { color } }} />
+            </Sparklines>
+          </div>
+        )}
+        {data === 'confirmedTransactions' && (
+          <div className="cart">
+            <h1>{title}</h1>
+            <h4>{description}</h4>
+            <Sparklines data={CTdata}>
+              <SparklinesBars color={color} />
+            </Sparklines>
+          </div>
+        )}
+      </section>
     )
   }
 }

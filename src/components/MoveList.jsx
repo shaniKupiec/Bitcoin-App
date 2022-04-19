@@ -2,6 +2,7 @@ import React from 'react'
 
 export function MoveList({ title, movesList }) {
     
+  if(!movesList || !movesList.length) return 
   return (
     <section className="moves">
       <span className="moves__title">{title}</span>
@@ -10,8 +11,8 @@ export function MoveList({ title, movesList }) {
         {movesList.map((move) => (
           <li key={move.at} className="moves__list__item">
             <span>to: {move.to}</span>
-            <span>to: {move.at}</span>
-            <span>amount: {move.amount}</span>
+            <span>at: {new Date(move.at).toLocaleString()}</span>
+            <span>amount: {move.amount} coins</span>
           </li>
         ))}
       </ul>

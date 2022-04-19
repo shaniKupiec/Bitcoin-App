@@ -13,10 +13,13 @@
 
     &__name {
         font-size: rem(20px);
+        .phone{
+            display: none;
+        }
     }
 
     &:hover &__img {
-        background-color: $hoverClr;
+        background-color: $clr2;
     }
 }
 
@@ -31,6 +34,13 @@
         &__img {
             width: 50px;
             box-shadow: none;
+        }
+
+        &__name {
+            .phone{
+                font-size: rem(16px);
+                display: block;
+            }
         }
 
         &:hover &__img {

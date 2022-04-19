@@ -1,5 +1,5 @@
 .trans {
-    background-color: #2487c9;
+    background-color: $clr2;
     padding: 20px 40px;
     border-radius: 5px;
     margin-top: 20px;
@@ -15,7 +15,7 @@
         input {
             background: none;
             border: 0px;
-            color: white;
+            color: $clr1;
             box-shadow: 0px 1px 0px 0px $clr1;
             width: 60px;
             margin-inline-start: 5px;
@@ -25,8 +25,9 @@
             margin-inline-start: 5px;
             position: absolute;
             right: 0;
+            background-color: $clr3;
             &.disable {
-                background-color: $blueClr;
+                background-color: darken($clr3, 15%);
                 cursor: not-allowed;
             }
         }

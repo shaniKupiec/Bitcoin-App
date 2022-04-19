@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 // import { removeContact, saveContact } from '../store/actions/contactActions'
 
 import { TransferFund } from '../components/TransferFund'
+import { MoveList } from '../components/MoveList'
 
 import contactService from '../services/contact.service'
 import userService from '../services/user.service'
@@ -11,18 +12,18 @@ import userService from '../services/user.service'
 export class ContactDetailsPage extends Component {
   state = {
     contact: null,
-    loggedinUser: null,
+    loggedInUser: null,
   }
 
   componentDidMount() {
     this.loadContact()
-    this.loadLoggedinUser()
+    this.loadLoggedInUser()
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.match.params.id !== this.props.match.params.id) {
       this.loadContact()
-      this.loadLoggedinUser()
+      this.loadLoggedInUser()
     }
   }
 
@@ -31,9 +32,9 @@ export class ContactDetailsPage extends Component {
     this.setState({ contact })
   }
 
-  loadLoggedinUser = () => {
-    const loggedinUser = userService.getLoggedInUser()
-    this.setState({ loggedinUser })
+  loadLoggedInUser = () => {
+    const loggedInUser = userService.getLoggedInUser()
+    this.setState({ loggedInUser })
   }
 
   onBack = () => {
@@ -42,10 +43,13 @@ export class ContactDetailsPage extends Component {
 
   onTransferCoins = (amount) => {
     userService.addMove(this.state.contact, amount)
+    this.loadContact()
+    this.loadLoggedInUser()
   }
 
   render() {
-    const { contact, loggedinUser } = this.state
+    const { contact, loggedInUser } = this.state
+    if (!loggedInUser || !contact) return <div>Loading...</div>
     return contact ? (
       <section className="details-cmp">
         <div className="details-cmp__btns">
@@ -72,7 +76,8 @@ export class ContactDetailsPage extends Component {
           </section>
         </section>
 
-        <TransferFund contact={this.state.contact} maxCoins={loggedinUser.coins} onTransferCoins={this.onTransferCoins} />
+        <TransferFund contact={this.state.contact} maxCoins={loggedInUser.coins} onTransferCoins={this.onTransferCoins} />
+        <MoveList movesList={loggedInUser.moves.filter((m) => m.toId === contact._id)} title="My Moves" />
       </section>
     ) : (
       <div>Loading...</div>
