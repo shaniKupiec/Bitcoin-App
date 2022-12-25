@@ -203,8 +203,6 @@ function filter(term) {
   })
 }
 
-
-
 function _makeId(length = 10) {
   var txt = ''
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'

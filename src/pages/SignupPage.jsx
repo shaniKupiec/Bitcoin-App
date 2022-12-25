@@ -11,12 +11,12 @@ export class SignupPage extends Component {
     const value = target.type === 'number' ? +target.value || '' : target.value
     this.setState({ [field]: value })
   }
-  
+
   signup = async (ev) => {
     ev.preventDefault()
     console.log('username signup cmp:', this.state.userName)
     const userName = userService.signup(this.state.userName)
-    await this.setState({ userName })
+    this.setState({ userName })
     this.props.history.push('/')
   }
 

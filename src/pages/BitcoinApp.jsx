@@ -22,12 +22,12 @@ export default class BitcoinApp extends Component {
       <Router>
         <AppHeader changePage={this.changePage} />
         <Switch>
-          <this.PrivateRoute path="/contact/edit/:id?" component={ContactEditPage} />
-          <this.PrivateRoute path="/contact/:id" component={ContactDetailsPage} />
+          <Route path="/contact/edit/:id?" component={ContactEditPage} />
+          <Route path="/contact/:id" component={ContactDetailsPage} />
           <Route path="/contact" component={ContactPage} />
           <Route path="/chart" component={StatisticPage} />
           <Route path="/signup" component={SignupPage} />
-          <this.PrivateRoute path="/" component={HomePage} />
+          <Route path="/" component={HomePage} />
         </Switch>
       </Router>
     )
