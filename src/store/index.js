@@ -5,7 +5,6 @@ import { userReducer } from "./reducers/userReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-
 const rootReducer = combineReducers({
     contactModule: contactReducer,
     userModule: userReducer

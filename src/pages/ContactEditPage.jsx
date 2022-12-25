@@ -14,6 +14,7 @@ export class _ContactEditPage extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    // relevant for the NEXT feature 
     if (prevProps.match.params.id !== this.props.match.params.id) {
       this.loadContact()
     }
@@ -25,7 +26,7 @@ export class _ContactEditPage extends Component {
     this.setState({ contact })
   }
 
-  hangleChange = async ({ target }) => {
+  handleChange = async ({ target }) => {
     const field = target.name
     const value = target.type === 'number' ? +target.value || '' : target.value
     this.setState((prevState) => ({ contact: { ...prevState.contact, [field]: value } }))
@@ -59,17 +60,17 @@ export class _ContactEditPage extends Component {
           <form className="edit" onSubmit={this.onSave}>
             <span className="edit__row">
               <label htmlFor="name">Name:</label>
-              <input type="text" id="name" onChange={this.hangleChange} name="name" value={contact.name} />
+              <input type="text" id="name" onChange={this.handleChange} name="name" value={contact.name} />
             </span>
 
             <span className="edit__row">
               <label htmlFor="email">Email:</label>
-              <input type="email" id="email" onChange={this.hangleChange} name="email" value={contact.email} />
+              <input type="email" id="email" onChange={this.handleChange} name="email" value={contact.email} />
             </span>
 
             <span className="edit__row">
               <label htmlFor="phone">Phone:</label>
-              <input type="tel" id="phone" onChange={this.hangleChange} name="phone" value={contact.phone} />
+              <input type="tel" id="phone" onChange={this.handleChange} name="phone" value={contact.phone} />
             </span>
 
             <button className="edit__save">

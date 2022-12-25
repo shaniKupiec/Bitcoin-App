@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 export function AppHeader() {
   return (
     <header>
-      <NavLink to="/">
+      <NavLink to="/" exact>
         <i className="fa-solid fa-house-user header__icon" title="Home"></i>
       </NavLink>
       <NavLink to="/contact">
