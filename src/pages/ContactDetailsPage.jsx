@@ -1,15 +1,13 @@
 import { Component } from 'react'
 import { Link } from 'react-router-dom'
-// import { connect } from 'react-redux'
-// import { removeContact, saveContact } from '../store/actions/contactActions'
+import { connect } from 'react-redux'
+import { getContactById } from '../store/actions/contactActions'
+import { spendBalance } from '../store/actions/userActions'
 
 import { TransferFund } from '../components/TransferFund'
 import { MoveList } from '../components/MoveList'
 
-import contactService from '../services/contact.service'
-import userService from '../services/user.service'
-
-export class ContactDetailsPage extends Component {
+export class _ContactDetailsPage extends Component {
   state = {
     contact: null,
     loggedInUser: null,
@@ -28,12 +26,12 @@ export class ContactDetailsPage extends Component {
   }
 
   loadContact = async () => {
-    const contact = await contactService.getById(this.props.match.params.id)
+    const contact = await this.props.getContactById(this.props.match.params.id)
     this.setState({ contact })
   }
 
   loadLoggedInUser = () => {
-    const loggedInUser = userService.getLoggedInUser()
+    const { loggedInUser } = this.props
     this.setState({ loggedInUser })
   }
 
@@ -42,7 +40,7 @@ export class ContactDetailsPage extends Component {
   }
 
   onTransferCoins = (amount) => {
-    userService.addMove(this.state.contact, amount)
+    this.props.spendBalance(this.state.contact, amount)
     this.loadContact()
     this.loadLoggedInUser()
   }
@@ -84,3 +82,16 @@ export class ContactDetailsPage extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    loggedInUser: state.userModule.loggedInUser,
+  };
+};
+
+const mapDispatchToProps = {
+  getContactById,
+  spendBalance
+};
+
+export const ContactDetailsPage = connect(mapStateToProps, mapDispatchToProps)(_ContactDetailsPage);

@@ -1,7 +1,6 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 
-import contactService from "../services/contact.service";
 import { removeContact, saveContact, getContactById } from "../store/actions/contactActions";
 
 export class _ContactEditPage extends Component {
@@ -21,7 +20,6 @@ export class _ContactEditPage extends Component {
   }
 
   loadContact = async () => {
-    // console.log('this.props.match.params.id',this.props.match.params.id)
     const contact = this.props.match.params.id
       ? await this.props.getContactById(this.props.match.params.id)
       : {
@@ -29,8 +27,6 @@ export class _ContactEditPage extends Component {
           email: "",
           phone: "",
         };
-    // const contact = this.props.match.params.id ? await contactService.getById(this.props.match.params.id) : contactService.getEmpty()
-    // console.log("contact", contact);
     this.setState({ contact });
   };
 

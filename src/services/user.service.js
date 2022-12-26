@@ -7,26 +7,12 @@ export default {
 };
 
 const USER_KEY = "user";
-const LOGGEDIN_USER_KEY = "loggedInUser";
+const LOGGED_IN_USER_KEY = "loggedInUser";
 
-storageService.save(LOGGEDIN_USER_KEY, { name: "shani", coins: 100, moves: [] });
+const gDefaultLoggedInUser = { name: "shani", coins: 100, moves: [] }
 
 var gUsers = storageService.load(USER_KEY) || [];
-var gLoggedInUser = storageService.load(LOGGEDIN_USER_KEY) || null;
-loadUsers();
-
-function loadUsers() {
-  if (!gUsers || !gUsers.length) {
-    const users = [
-      {
-        name: "Shani K",
-        coins: 100,
-        moves: [],
-      },
-    ];
-    storageService.save(USER_KEY, users);
-  }
-}
+var gLoggedInUser = _loadLoggedInUser()
 
 function getLoggedInUser() {
   return gLoggedInUser;
@@ -44,7 +30,7 @@ function signup(userName) {
     storageService.save(USER_KEY, gUsers);
   }
   gLoggedInUser = user;
-  storageService.save(LOGGEDIN_USER_KEY, gLoggedInUser);
+  storageService.save(LOGGED_IN_USER_KEY, gLoggedInUser);
 }
 
 function addMove(contact, amount) {
@@ -61,5 +47,25 @@ function addMove(contact, amount) {
   gUsers[idx] = gLoggedInUser;
 
   storageService.save(USER_KEY, gUsers);
-  storageService.save(LOGGEDIN_USER_KEY, gLoggedInUser);
+  storageService.save(LOGGED_IN_USER_KEY, gLoggedInUser);
+
+  return gLoggedInUser
+}
+
+// function _loadUsers() {
+//   let contacts = storageService.load(STORAGE_KEY)
+//   if (!contacts || !contacts.length) {
+//     contacts = gDefaultContacts
+//     storageService.save(STORAGE_KEY, gDefaultContacts)
+//   }
+//   return contacts
+// }
+
+function _loadLoggedInUser() {
+  let loggedInUser = storageService.load(LOGGED_IN_USER_KEY)
+  if (!loggedInUser) {
+    loggedInUser = gDefaultLoggedInUser
+    storageService.save(LOGGED_IN_USER_KEY, gDefaultLoggedInUser)
+  }
+  return loggedInUser
 }

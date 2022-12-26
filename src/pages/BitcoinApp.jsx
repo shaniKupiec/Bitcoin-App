@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom/cjs/react-router-dom.min'
+import { connect } from 'react-redux'
 
 import { AppHeader } from '../components/AppHeader'
 import { HomePage } from './HomePage'
@@ -10,12 +11,18 @@ import { ContactEditPage } from './ContactEditPage'
 import { SignupPage } from './SignupPage'
 
 import userService from '../services/user.service'
+import { loadLoggedInUser } from '../store/actions/userActions'
 
-export default class BitcoinApp extends Component {
+export class _BitcoinApp extends Component {
   // PrivateRoute = (props) => {
   //   const isLoggedUser = userService.getLoggedInUser()
   //   return isLoggedUser ? <Route {...props} /> : <Redirect to="/signup" />
   // }
+
+  componentDidMount() {
+    this.props.loadLoggedInUser()
+    console.log('this.props.loggedInUser', this.props.loggedInUser)
+  }
 
   render() {
     return (
@@ -33,3 +40,15 @@ export default class BitcoinApp extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    loggedInUser: state.userModule.loggedInUser
+  }
+}
+
+const mapDispatchToProps = {
+  loadLoggedInUser,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(_BitcoinApp)
