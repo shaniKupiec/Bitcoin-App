@@ -19,7 +19,7 @@ const currency = 'USD'
 
 async function getRate(coins = 1) {
   if (gRateCache) {
-    console.log('getting from cache')
+    // console.log('getting from cache')
     return new Promise((resolve) => resolve(gRateCache * coins))
   }
   const getRateUrl = `https://blockchain.info/tobtc?currency=${currency}&value=1`
@@ -37,7 +37,7 @@ async function getRate(coins = 1) {
 
 async function getMarketPrice() {
   if (gMarketPriceCache.length) {
-    console.log('getting from cache')
+    // console.log('getting from cache')
     return new Promise((resolve) => resolve(gMarketPriceCache))
   }
   const getRateUrl = `https://api.blockchain.info/charts/market-price?timespan=5months&format=json&cors=true`

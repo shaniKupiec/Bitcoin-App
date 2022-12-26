@@ -1,13 +1,14 @@
 import { Component } from 'react'
+import { connect } from 'react-redux'
+
 import Lottie from 'react-lottie'
 import animationData from '../assets/animations/bitcoin.json'
 
 import { MoveList } from '../components/MoveList'
 
-import userService from '../services/user.service'
 import bitcoinService from '../services/bitcoin.service'
 
-export class HomePage extends Component {
+export class _HomePage extends Component {
   state = {
     user: null,
     rate: null,
@@ -18,8 +19,14 @@ export class HomePage extends Component {
     this.loadRate()
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.loggedInUser !== this.props.loggedInUser) {
+      this.loadUser()
+    }
+  }
+
   loadUser = async () => {
-    const user = userService.getLoggedInUser()
+    const user = this.props.loggedInUser
     this.setState({ user })
   }
 
@@ -68,3 +75,14 @@ export class HomePage extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    loggedInUser: state.userModule.loggedInUser
+  }
+}
+
+const mapDispatchToProps = {
+}
+
+export const HomePage = connect(mapStateToProps, mapDispatchToProps)(_HomePage)

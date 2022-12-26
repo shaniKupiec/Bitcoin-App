@@ -20,8 +20,10 @@ export class _BitcoinApp extends Component {
   // }
 
   componentDidMount() {
+    console.log('%c _BitcoinApp', "color:red ;font-weight: bold")
     this.props.loadLoggedInUser()
-    console.log('this.props.loggedInUser', this.props.loggedInUser)
+    console.log('after loading logged in user _BitcoinApp');
+    // console.log('this.props.loggedInUser', this.props.loggedInUser)
   }
 
   render() {
