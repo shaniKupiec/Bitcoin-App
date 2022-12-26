@@ -28,6 +28,7 @@ export class _HomePage extends Component {
   loadUser = async () => {
     const user = this.props.loggedInUser
     this.setState({ user })
+    console.log('homePage user',user)
   }
 
   loadRate = async () => {

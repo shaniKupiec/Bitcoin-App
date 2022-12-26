@@ -2,23 +2,24 @@ import storageService from "./storage.service";
 
 export default {
   getLoggedInUser,
-  signup,
+  signUp,
   addMove,
 };
 
 const USER_KEY = "user";
 const LOGGED_IN_USER_KEY = "loggedInUser";
 
-const gDefaultLoggedInUser = { name: "shani", coins: 100, moves: [] }
+// const gDefaultLoggedInUser = { name: "shani", coins: 100, moves: [] }
 
 var gUsers = storageService.load(USER_KEY) || [];
 var gLoggedInUser = _loadLoggedInUser()
 
 function getLoggedInUser() {
+  console.log('user.service - gLoggedInUser',gLoggedInUser)
   return gLoggedInUser;
 }
 
-function signup(userName) {
+function signUp(userName = 'Person') {
   var user = gUsers.find((user) => user.name === userName);
   if (!user) {
     user = {
@@ -31,6 +32,7 @@ function signup(userName) {
   }
   gLoggedInUser = user;
   storageService.save(LOGGED_IN_USER_KEY, gLoggedInUser);
+  return gLoggedInUser
 }
 
 function addMove(contact, amount) {
@@ -62,10 +64,10 @@ function addMove(contact, amount) {
 // }
 
 function _loadLoggedInUser() {
-  let loggedInUser = storageService.load(LOGGED_IN_USER_KEY)
-  if (!loggedInUser) {
-    loggedInUser = gDefaultLoggedInUser
-    storageService.save(LOGGED_IN_USER_KEY, gDefaultLoggedInUser)
-  }
+  let loggedInUser = storageService.load(LOGGED_IN_USER_KEY) || null
+  // if (!loggedInUser) {
+  //   loggedInUser = gDefaultLoggedInUser
+  //   storageService.save(LOGGED_IN_USER_KEY, gDefaultLoggedInUser)
+  // }
   return loggedInUser
 }

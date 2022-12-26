@@ -1,9 +1,5 @@
 const INITIAL_STATE = {
-  // loggedInUser: {
-  //   name: "Shani K",
-  //   coins: 100,
-  //   moves: [],
-  // },
+  loggedInUser: null
 };
 
 export function userReducer(state = INITIAL_STATE, action) {

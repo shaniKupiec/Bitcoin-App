@@ -9,7 +9,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const rootReducer = combineReducers({
     contactModule: contactReducer,
     userModule: userReducer,
-    dataReducer: dataReducer
+    dataModule: dataReducer
 })
 
 export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))

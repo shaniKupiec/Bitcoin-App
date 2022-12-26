@@ -1,56 +1,55 @@
-import { Component } from 'react'
-import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom/cjs/react-router-dom.min'
-import { connect } from 'react-redux'
+import { useEffect, useState } from "react";
+import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import { useDispatch, useSelector } from "react-redux";
 
-import { AppHeader } from '../components/AppHeader'
-import { HomePage } from './HomePage'
-import { ContactPage } from './ContactPage'
-import { ContactDetailsPage } from './ContactDetailsPage'
-import { StatisticPage } from './StatisticPage'
-import { ContactEditPage } from './ContactEditPage'
-import { SignupPage } from './SignupPage'
+import { AppHeader } from "../components/AppHeader";
+import { HomePage } from "./HomePage";
+import { ContactPage } from "./ContactPage";
+import { ContactDetailsPage } from "./ContactDetailsPage";
+import { StatisticPage } from "./StatisticPage";
+import { ContactEditPage } from "./ContactEditPage";
+import { SignUpPage } from "./SignUpPage";
 
-import userService from '../services/user.service'
-import { loadLoggedInUser } from '../store/actions/userActions'
+import { loadLoggedInUser } from "../store/actions/userActions";
 
-export class _BitcoinApp extends Component {
-  // PrivateRoute = (props) => {
-  //   const isLoggedUser = userService.getLoggedInUser()
-  //   return isLoggedUser ? <Route {...props} /> : <Redirect to="/signup" />
-  // }
+export const BitcoinApp = (props) => {
+  useEffect(() => {
+    console.log('loadLoggedInUser');
+    dispatch(loadLoggedInUser());
+  }, []);
 
-  componentDidMount() {
-    console.log('%c _BitcoinApp', "color:red ;font-weight: bold")
-    this.props.loadLoggedInUser()
-    console.log('after loading logged in user _BitcoinApp');
-    // console.log('this.props.loggedInUser', this.props.loggedInUser)
-  }
+  const { loggedInUser } = useSelector((state) => state.userModule);
+  const dispatch = useDispatch();
+  const [key, setKey] = useState(0);
 
-  render() {
-    return (
-      <Router>
-        <AppHeader />
-        <Switch>
-          <Route path="/contact/edit/:id?" component={ContactEditPage} />
-          <Route path="/contact/:id" component={ContactDetailsPage} />
-          <Route path="/contact" component={ContactPage} />
-          <Route path="/chart" component={StatisticPage} />
-          <Route path="/signup" component={SignupPage} />
-          <Route path="/" component={HomePage} />
-        </Switch>
-      </Router>
-    )
-  }
-}
+  
+  useEffect(() => {
+    console.log('userModule changed!', loggedInUser);
+    setKey(prevState => prevState + 1)
+    // setLoggedInUser(useSelector((state) => state.userModule).loggedUser)
+  }, [loggedInUser]);
 
-const mapStateToProps = (state) => {
-  return {
-    loggedInUser: state.userModule.loggedInUser
-  }
-}
+  const PrivateRoute = (props) => {
+    if(loggedInUser){
+      console.log('loggedInUser true');
+      return <Route {...props} />
+    }
+    console.log('loggedInUser false');
+    return <Redirect to="/signup" />
+  };
 
-const mapDispatchToProps = {
-  loadLoggedInUser,
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(_BitcoinApp)
+  return (
+    <Router>
+      <div>{key}</div>
+      <AppHeader />
+      <Switch>
+        <PrivateRoute path="/contact/edit/:id?" component={ContactEditPage} />
+        <PrivateRoute path="/contact/:id" component={ContactDetailsPage} />
+        <PrivateRoute path="/contact" component={ContactPage} />
+        <PrivateRoute path="/chart" component={StatisticPage} />
+        <Route path="/signup" component={SignUpPage} />
+        <PrivateRoute path="/" component={HomePage} />
+      </Switch>
+    </Router>
+  );
+};
