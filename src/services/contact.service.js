@@ -1,3 +1,5 @@
+import storageService from "./storage.service"
+
 export default {
   query,
   getById,
@@ -6,7 +8,9 @@ export default {
   getEmpty
 }
 
-const contacts = [
+const STORAGE_KEY = 'contacts'
+
+const gDefaultContacts = [
   {
     "_id": "5a56640269f443a5d64b32ca",
     "name": "Ochoa Hyde",
@@ -122,63 +126,35 @@ const contacts = [
     "email": "lillyconner@renovize.com",
     "phone": "+1 (842) 587-3812"
   }
-];
+]
 
-function sort(arr) {
-  return arr.sort((a, b) => {
-    if (a.name.toLocaleLowerCase() < b.name.toLocaleLowerCase()) {
-      return -1;
-    }
-    if (a.name.toLocaleLowerCase() > b.name.toLocaleLowerCase()) {
-      return 1;
-    }
-
-    return 0;
-  })
-}
+var gContact = _loadContact()
 
 function query(filterBy = null) {
   return new Promise((resolve, reject) => {
-    var contactsToReturn = contacts;
+    var contactsToReturn = gContact;
     if (filterBy && filterBy.term) {
-      contactsToReturn = filter(filterBy.term)
+      contactsToReturn = _filter(filterBy.term)
     }
-    resolve(sort(contactsToReturn))
+    resolve(_sort(contactsToReturn))
   })
 }
 
 function getById(id) {
   return new Promise((resolve, reject) => {
-    const contact = contacts.find(contact => contact._id === id)
+    const contact = gContact.find(contact => contact._id === id)
     contact ? resolve(contact) : reject(`Contact id ${id} not found!`)
   })
 }
 
 function remove(id) {
   return new Promise((resolve, reject) => {
-    const index = contacts.findIndex(contact => contact._id === id)
+    const index = gContact.findIndex(contact => contact._id === id)
     if (index !== -1) {
-      contacts.splice(index, 1)
-    }
-    resolve(contacts)
-  })
-}
-
-function _updateContact(contact) {
-  return new Promise((resolve, reject) => {
-    const index = contacts.findIndex(c => contact._id === c._id)
-    if (index !== -1) {
-      contacts[index] = contact
-    }
-    resolve(contact)
-  })
-}
-
-function _addContact(contact) {
-  return new Promise((resolve, reject) => {
-    contact._id = _makeId()
-    contacts.push(contact)
-    resolve(contact)
+      gContact.splice(index, 1)
+    } else reject(`Contact id ${id} can not be removed!`)
+    storageService.save(STORAGE_KEY, gContact)
+    resolve(id)
   })
 }
 
@@ -194,12 +170,45 @@ function getEmpty() {
   }
 }
 
-function filter(term) {
+function _updateContact(contact) {
+  return new Promise((resolve, reject) => {
+    const index = gContact.findIndex(c => contact._id === c._id)
+    if (index !== -1) {
+      gContact[index] = contact
+    } else reject(`Contact id ${contact.id} can not be updated!`)
+    storageService.save(STORAGE_KEY, gContact)
+    resolve(contact)
+  })
+}
+
+function _addContact(contact) {
+  return new Promise((resolve, reject) => {
+    contact._id = _makeId()
+    gContact.push(contact)
+    storageService.save(STORAGE_KEY, gContact)
+    resolve(contact)
+  })
+}
+
+function _filter(term) {
   term = term.toLocaleLowerCase()
-  return contacts.filter(contact => {
+  return gContact.filter(contact => {
     return contact.name.toLocaleLowerCase().includes(term) ||
       contact.phone.toLocaleLowerCase().includes(term) ||
       contact.email.toLocaleLowerCase().includes(term)
+  })
+}
+
+function _sort(arr) {
+  return arr.sort((a, b) => {
+    if (a.name.toLocaleLowerCase() < b.name.toLocaleLowerCase()) {
+      return -1;
+    }
+    if (a.name.toLocaleLowerCase() > b.name.toLocaleLowerCase()) {
+      return 1;
+    }
+
+    return 0;
   })
 }
 
@@ -210,4 +219,13 @@ function _makeId(length = 10) {
     txt += possible.charAt(Math.floor(Math.random() * possible.length))
   }
   return txt
+}
+
+function _loadContact() {
+  let contacts = storageService.load(STORAGE_KEY)
+  if (!contacts || !contacts.length) {
+    contacts = gDefaultContacts
+    storageService.save(STORAGE_KEY, gDefaultContacts)
+  }
+  return contacts
 }

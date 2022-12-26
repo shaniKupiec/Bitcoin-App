@@ -12,15 +12,15 @@ import { SignupPage } from './SignupPage'
 import userService from '../services/user.service'
 
 export default class BitcoinApp extends Component {
-  PrivateRoute = (props) => {
-    const isLoggedUser = userService.getLoggedInUser()
-    return isLoggedUser ? <Route {...props} /> : <Redirect to="/signup" />
-  }
+  // PrivateRoute = (props) => {
+  //   const isLoggedUser = userService.getLoggedInUser()
+  //   return isLoggedUser ? <Route {...props} /> : <Redirect to="/signup" />
+  // }
 
   render() {
     return (
       <Router>
-        <AppHeader changePage={this.changePage} />
+        <AppHeader />
         <Switch>
           <Route path="/contact/edit/:id?" component={ContactEditPage} />
           <Route path="/contact/:id" component={ContactDetailsPage} />

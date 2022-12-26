@@ -11,9 +11,9 @@ const RATE_KEY = 'bitcion-rate'
 const MARKET_PRICE_KEY = 'bitcion-market-price'
 const CONF_TRANS_KEY = 'confirmed-transactions'
 
-var gRateCache = storageService.loadFromStorage(RATE_KEY) || null
-var gMarketPriceCache = storageService.loadFromStorage(MARKET_PRICE_KEY) || []
-var gConfirmedTransactionsCache = storageService.loadFromStorage(CONF_TRANS_KEY) || []
+var gRateCache = storageService.load(RATE_KEY) || null
+var gMarketPriceCache = storageService.load(MARKET_PRICE_KEY) || []
+var gConfirmedTransactionsCache = storageService.load(CONF_TRANS_KEY) || []
 
 const currency = 'USD'
 
@@ -27,7 +27,7 @@ async function getRate(coins = 1) {
     var res = await axios.get(getRateUrl)
     res = res.data
     gRateCache = res
-    storageService.saveToStorage(RATE_KEY, gRateCache)
+    storageService.save(RATE_KEY, gRateCache)
     return res * coins
   } catch (err) {
     console.log(err)
@@ -45,7 +45,7 @@ async function getMarketPrice() {
     var res = await axios.get(getRateUrl)
     res = res.data.values
     gMarketPriceCache = res
-    storageService.saveToStorage(MARKET_PRICE_KEY, gMarketPriceCache)
+    storageService.save(MARKET_PRICE_KEY, gMarketPriceCache)
     return res
   } catch (err) {
     console.log(err)
@@ -62,7 +62,7 @@ async function getConfirmedTransactions() {
     var res = await axios.get(getgConfirmedTransactionsUrl)
     res = res.data.values
     gConfirmedTransactionsCache = res
-    storageService.saveToStorage(CONF_TRANS_KEY, gConfirmedTransactionsCache)
+    storageService.save(CONF_TRANS_KEY, gConfirmedTransactionsCache)
     return res
   } catch (err) {
     console.log(err)

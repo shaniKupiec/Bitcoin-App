@@ -5,7 +5,7 @@ export class ContactFilter extends Component {
     term: this.props.filterBy?.term || '',
   }
 
-  hangleChange = ({ target }) => {
+  handleChange = ({ target }) => {
     const field = target.name
     const value = target.type === 'number' ? +target.value || '' : target.value
     this.setState({ [field]: value }, () => {
@@ -18,7 +18,7 @@ export class ContactFilter extends Component {
     return (
       <section className="filter">
         <i className="fa-solid fa-magnifying-glass filter"></i>
-        <input type="text" className="filter__search" onChange={this.hangleChange} name="term" value={term} placeholder="Search" />
+        <input type="text" className="filter__search" onChange={this.handleChange} name="term" value={term} placeholder="Search" />
       </section>
     )
   }

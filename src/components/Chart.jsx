@@ -39,25 +39,21 @@ export class Chart extends Component {
     if (!MPdata || !CTdata) return <div>Loading...</div>
     return (
       <section>
+        <div className="chart">
+          <h1>{title}</h1>
+          <h4>{description}</h4>
         {data === 'marketPrice' && (
-          <div className="cart">
-            <h1>{title}</h1>
-            <h4>{description}</h4>
             <Sparklines data={MPdata} margin={6}>
               <SparklinesLine style={{ strokeWidth: 3, stroke: '#336aff', fill: { color } }} />
               <SparklinesSpots size={4} style={{ stroke: '#336aff', strokeWidth: 3, fill: { color } }} />
             </Sparklines>
-          </div>
         )}
         {data === 'confirmedTransactions' && (
-          <div className="cart">
-            <h1>{title}</h1>
-            <h4>{description}</h4>
             <Sparklines data={CTdata}>
               <SparklinesBars color={color} />
             </Sparklines>
-          </div>
-        )}
+            )}
+        </div>
       </section>
     )
   }

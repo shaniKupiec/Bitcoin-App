@@ -5,7 +5,7 @@ export class TransferFund extends Component {
     amount: 0,
   }
 
-  hangleChange = ({ target }) => {
+  handleChange = ({ target }) => {
     const field = target.name
     const value = target.type === 'number' ? +target.value || '' : target.value
     this.setState({ [field]: value })
@@ -25,7 +25,7 @@ export class TransferFund extends Component {
         <div className='trans__title'>Transfer coins to {this.props.contact.name}:</div>
         <div className="trans__form">
           <label htmlFor="amount">Amount:</label>
-          <input type="number" min="0" max={this.props.maxCoins} onChange={this.hangleChange} id="amount" name="amount" value={amount} />
+          <input type="number" min="0" max={this.props.maxCoins} onChange={this.handleChange} id="amount" name="amount" value={amount} />
           <button onClick={this.onTransferCoins} className={className}>Transfer</button>
         </div>
       </section>

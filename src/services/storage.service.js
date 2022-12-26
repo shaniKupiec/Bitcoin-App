@@ -1,14 +1,14 @@
 export default {
-  saveToStorage,
-  loadFromStorage,
+  save,
+  load,
 }
 
-function saveToStorage(key, val) {
+function save(key, val) {
   const str = JSON.stringify(val)
   localStorage.setItem(key, str)
 }
 
-function loadFromStorage(key) {
+function load(key) {
   const str = localStorage.getItem(key)
   const val = JSON.parse(str)
   return val
