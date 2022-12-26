@@ -1,54 +1,62 @@
-import { Component } from 'react'
-import { connect } from 'react-redux'
+import { Component } from "react";
+import { connect } from "react-redux";
 
-import contactService from '../services/contact.service'
-import { removeContact, saveContact } from '../store/actions/contactActions'
+import contactService from "../services/contact.service";
+import { removeContact, saveContact, getContactById } from "../store/actions/contactActions";
 
 export class _ContactEditPage extends Component {
   state = {
     contact: null,
-  }
+  };
 
   componentDidMount() {
-    this.loadContact()
+    this.loadContact();
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // relevant for the NEXT feature 
+    // relevant for the NEXT feature
     if (prevProps.match.params.id !== this.props.match.params.id) {
-      this.loadContact()
+      this.loadContact();
     }
   }
 
   loadContact = async () => {
     // console.log('this.props.match.params.id',this.props.match.params.id)
-    const contact = this.props.match.params.id ? await contactService.getById(this.props.match.params.id) : contactService.getEmpty()
-    this.setState({ contact })
-  }
+    const contact = this.props.match.params.id
+      ? await this.props.getContactById(this.props.match.params.id)
+      : {
+          name: "",
+          email: "",
+          phone: "",
+        };
+    // const contact = this.props.match.params.id ? await contactService.getById(this.props.match.params.id) : contactService.getEmpty()
+    // console.log("contact", contact);
+    this.setState({ contact });
+  };
 
   handleChange = async ({ target }) => {
-    const field = target.name
-    const value = target.type === 'number' ? +target.value || '' : target.value
-    this.setState((prevState) => ({ contact: { ...prevState.contact, [field]: value } }))
-  }
+    const field = target.name;
+    const value = target.type === "number" ? +target.value || "" : target.value;
+    this.setState((prevState) => ({ contact: { ...prevState.contact, [field]: value } }));
+  };
 
   onSave = async (ev) => {
-    ev.preventDefault()
-    this.props.saveContact(this.state.contact)
-    this.onBack()
-  }
+    ev.preventDefault();
+    this.props.saveContact(this.state.contact);
+    this.onBack();
+  };
 
   onRemove = async () => {
-    this.props.removeContact(this.state.contact._id)
-    this.onBack(false)
-  }
+    this.props.removeContact(this.state.contact._id);
+    this.onBack(false);
+  };
 
   onBack = (toContacts = true) => {
-    this.state.contact._id && toContacts ? this.props.history.push(`/contact/${this.state.contact._id}`) : this.props.history.push(`/contact`)
-  }
+    this.state.contact._id && toContacts ? this.props.history.push(`/contact/${this.state.contact._id}`) : this.props.history.push(`/contact`);
+  };
 
   render() {
-    const { contact } = this.state
+    const { contact } = this.state;
     return contact ? (
       <section className="edit-cmp">
         <div className="edit-cmp__btns">
@@ -73,26 +81,24 @@ export class _ContactEditPage extends Component {
               <input type="tel" id="phone" onChange={this.handleChange} name="phone" value={contact.phone} />
             </span>
 
-            <button className="edit__save">
-              Save
-            </button>
+            <button className="edit__save">Save</button>
           </form>
         </section>
       </section>
     ) : (
       <div>Loading...</div>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-  }
-}
+const mapStateToProps = (state) => {
+  return {};
+};
 
 const mapDispatchToProps = {
   removeContact,
   saveContact,
-}
+  getContactById,
+};
 
-export const ContactEditPage = connect(mapStateToProps, mapDispatchToProps)(_ContactEditPage)
+export const ContactEditPage = connect(mapStateToProps, mapDispatchToProps)(_ContactEditPage);

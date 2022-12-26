@@ -4,8 +4,7 @@ export default {
   query,
   getById,
   remove,
-  save,
-  getEmpty
+  save
 }
 
 const STORAGE_KEY = 'contacts'
@@ -160,14 +159,6 @@ function remove(id) {
 
 function save(contact) {
   return contact._id ? _updateContact(contact) : _addContact(contact)
-}
-
-function getEmpty() {
-  return {
-    name: '',
-    email: '',
-    phone: ''
-  }
 }
 
 function _updateContact(contact) {

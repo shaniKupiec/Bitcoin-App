@@ -34,6 +34,16 @@ export function removeContact(contactId) {
   }
 }
 
+export function getContactById(contactId) {
+  return async () => {
+    try {
+      return await contactService.getById(contactId)
+    } catch (err) {
+      console.log('err:', err)
+    }
+  }
+}
+
 export function setFilterBy(filterBy) {
   return async (dispatch) => {
     dispatch({ type: 'SET_FILTER_BY', filterBy })
