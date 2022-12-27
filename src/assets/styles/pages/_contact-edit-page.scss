@@ -7,6 +7,11 @@
         @include flex(row, space-between);
         width: 100%;
         cursor: pointer;
+
+        .back,
+        .trash {
+            width: 20px;
+        }
     }
 
     .contact-det {

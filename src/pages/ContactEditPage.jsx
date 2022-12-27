@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 
 import { removeContact, saveContact, getContactById } from "../store/actions/contactActions";
 
+import arrowLeft from "../assets/images/icons/arrow-left.png";
+import trashIcon from "../assets/images/icons/trash.png";
+
 export class _ContactEditPage extends Component {
   state = {
     contact: null,
@@ -56,8 +59,8 @@ export class _ContactEditPage extends Component {
     return contact ? (
       <section className="edit-cmp">
         <div className="edit-cmp__btns">
-          <i className="fa-solid fa-circle-arrow-left" title="Back" onClick={this.onBack}></i>
-          {contact._id && <i className="fa-solid fa-trash" title="Remove" onClick={this.onRemove}></i>}
+          <img src={arrowLeft} alt="" title="Back" onClick={this.onBack} className="back" />
+          {contact._id && <img src={trashIcon} alt="" title="Remove" className="trash" onClick={this.onRemove} />}
         </div>
         <section className="contact-det">
           <img src={`https://robohash.org/set_set5/${contact._id}.png`} alt="" className="contact-det__img" />

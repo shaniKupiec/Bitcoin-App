@@ -18,8 +18,9 @@ body {
 
   main{
     @include flex(column);
+    margin-top: 10px;
     &.add-margin{
-      margin: 0 $marginSides;
+      margin: 10px $marginSides 0;
     }
   }
 }

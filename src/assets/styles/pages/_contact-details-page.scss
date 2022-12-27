@@ -1,40 +1,65 @@
 .details-cmp {
     @include flex(column);
-    padding: 35px;
     gap: 20px;
 
     &__btns {
         @include flex(row, space-between);
         width: 100%;
         cursor: pointer;
+
+        .back {
+            width: 20px;
+        }
     }
 
     .contact-det {
         @include flex();
-        gap: 60px;
+        gap: 16px;
 
         &__img {
-            width: 200px;
+            width: 64px;
             border-radius: 50%;
         }
 
         .details {
-            @include flex(column, space-evenly, flex-start);
-            font-size: rem(20px);
-            height: 100%;
-
-            .details__icon {
-                color: $clr1;
-                position: absolute;
-                left: -40px;
-                top: 3px;
-                cursor: pointer;
+            @include flex(column, center, flex-start);
+            gap: 4px;
+            &__name {
+                font-size: rem(18px);
             }
+            &__info {
+                font-size: rem(12px);
+                color: $clrN4;
+                background-color: $clrB2;
+                padding: 10px;
+                border-radius: 12px;
 
-            .details__name,
-            .details__email,
-            .details__phone {
-                position: relative;
+                &__row{
+                    @include flex(row, start);
+                    gap: 4px;
+                    .icon{
+
+                    }
+
+                    span{
+
+                    }
+                }
+                // @include flex(column, space-evenly, flex-start);
+                // height: 100%;
+
+                // &__icon {
+                //     color: $clr1;
+                //     position: absolute;
+                //     left: -40px;
+                //     top: 3px;
+                //     cursor: pointer;
+                // }
+
+                // &__email,
+                // &__phone {
+                //     position: relative;
+                // }
             }
         }
     }
