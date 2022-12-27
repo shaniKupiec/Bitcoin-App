@@ -7,7 +7,13 @@ html {
 
 body {
   margin: 0;
-  color: $clr1;
+  background-color: #E5E5E5;
+  color: $clrN5;
+}
+
+.app{
+  background-color: $clrB1;
+  @include flex(column, space-between)
 }
 
 h1,
@@ -22,7 +28,7 @@ p {
 
 a {
   text-decoration: none;
-  color: $clr1;
+  color: $clrN5;
 }
 
 img {

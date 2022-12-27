@@ -39,6 +39,8 @@ export const BitcoinApp = (props) => {
   };
 
   return (
+    <section className="app">
+
     <Router>
       {/* <div>{key}</div> */}
       <Switch>
@@ -51,5 +53,6 @@ export const BitcoinApp = (props) => {
       </Switch>
       <AppHeader />
     </Router>
+    </section>
   );
 };
