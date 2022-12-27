@@ -1,5 +1,7 @@
 import { Component } from 'react'
 
+import searchIcon from '../assets/images/icons/search.png'
+
 export class ContactFilter extends Component {
   state = {
     term: this.props.filterBy?.term || '',
@@ -17,8 +19,8 @@ export class ContactFilter extends Component {
     const { term } = this.state
     return (
       <section className="filter">
-        <i className="fa-solid fa-magnifying-glass filter"></i>
         <input type="text" className="filter__search" onChange={this.handleChange} name="term" value={term} placeholder="Search" />
+        <img src={searchIcon} alt="" className="filter__icon" />
       </section>
     )
   }
