@@ -1,11 +1,50 @@
 header {
     @include flex(row, space-evenly);
-    padding: 25px;
-    background-color: #21242D;
+    padding: rem(25px);
+    background-color: #21242d;
     width: 100%;
 
-    .header__icon {
-        font-size: rem(25px);
-        cursor: pointer;
+    .link {
+        @include flex(column);
+        gap: rem(4px);
+        text-transform: capitalize;
+    }
+
+    .icon {
+        width: rem(24px);
+        height: rem(24px);
+    }
+
+    .home {
+        &__icon {
+            background-image: url("../../images/icons/home.png");
+        }
+        &:hover {
+            .home__icon {
+                background-image: url("../../images/icons/home-orange.png");
+            }
+        }
+    }
+
+    .contact {
+        &__icon {
+            background-image: url("../../images/icons/contact.png");
+        }
+        &:hover {
+            .contact__icon {
+                background-image: url("../../images/icons/contact-orange.png");
+            }
+        }
+    }
+
+    .chart {
+        &__icon {
+            background-image: url("../../images/icons/chart.png");
+        }
+        &:hover {
+            .chart__icon {
+                background-image: url("../../images/icons/chart-orange.png");
+            }
+        }
     }
 }

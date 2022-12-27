@@ -1,20 +1,25 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-// import homeBlack from '../assets/imgs/icons/homeBlack'
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 export function AppHeader() {
   return (
     <header>
-      <NavLink to="/" exact>
-        {/* <img src={homeBlack} alt="" /> */}
+      <NavLink to="/" exact className="home link">
+        <div className="home__icon icon"></div>
         <span>home</span>
       </NavLink>
-      <NavLink to="/contact">
-        <i className="fa-solid fa-address-book header__icon" title="Contacts"></i>
+      <NavLink to="/contact" className="contact link">
+        <div className="contact__icon icon"></div>
+        <span>contact</span>
       </NavLink>
-      <NavLink to="/chart">
-        <i className="fa-solid fa-chart-line header__icon" title="Charts"></i>
+      <NavLink to="/chart" className="chart link">
+        <div className="chart__icon icon"></div>
+        <span>chart</span>
+      </NavLink>
+      <NavLink to="/chart" className="chart link">
+        <div className="chart__icon icon"></div>
+        <span>chart</span>
       </NavLink>
     </header>
-  )
+  );
 }
