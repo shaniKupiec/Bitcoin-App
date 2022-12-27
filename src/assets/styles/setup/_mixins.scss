@@ -7,6 +7,57 @@
   align-items: $align;
 }
 
+@mixin black-row {
+  @include flex(row, start);
+  width: 100%;
+  padding: 10px 24px;
+  gap: 16px;
+
+  &:hover {
+    background-color: $clrB2;
+  }
+
+  border-bottom: 1px solid $clrN2;
+  &:last-of-type {
+    border: none;
+  }
+}
+
+@mixin btn($mainClr: $clrP1) {
+  background-color: $clrN1;
+  color: $mainClr;
+  border: 1px solid $mainClr;
+
+  width: 100%;
+  font-size: 18px;
+  border-radius: 12px;
+  height: 48px;
+  font-weight: bold;
+
+  transition: 0.3s;
+  
+  &:hover{
+    background-color: $mainClr;
+    color: $clrN1;
+  }
+}
+
+@mixin input {
+  background-color: $clrB2;
+  color: $clrN5;
+  caret-color: $clrP1;
+  border: 0;
+  outline: 0;
+  border-radius: 12px;
+  padding: 12px;
+  width: 100%;
+
+  &::placeholder {
+      color: $clrN3;
+  }
+  
+}
+
 /* Media queries Breakpoint mixins */
 
 @mixin for-mobile-layout {

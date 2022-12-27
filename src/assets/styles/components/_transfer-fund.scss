@@ -1,51 +1,43 @@
 .trans {
-    background-color: $clr2;
-    padding: 20px 40px;
-    border-radius: 5px;
-    margin-top: 20px;
-    font-size: rem(20px);
+    @include flex(column);
+    gap: 12px;
+    width: 100%;
 
-    &__title {
-        margin-bottom: 10px;
-    }
-
-    &__form {
+    &__input {
         position: relative;
+        width: 100%;
 
         input {
-            background: none;
-            border: 0px;
-            color: $clr1;
-            box-shadow: 0px 1px 0px 0px $clr1;
-            width: 60px;
-            margin-inline-start: 5px;
+            @include input;
+            padding-inline-start: 76px;
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
         }
 
-        button {
-            margin-inline-start: 5px;
+        img {
             position: absolute;
-            right: 0;
-            background-color: $clr3;
-            &.disable {
-                background-color: darken($clr3, 15%);
-                cursor: not-allowed;
-            }
+            width: 52px;
+            top: 9.5px;
+            left: 12px;
+            // margin-right: 12px;
+        }
+        
+        span{
+            position: absolute;
+            right: 12px;
+            top: 11px;
+            color: $clrN3;
         }
     }
-}
 
-@media (max-width: $break-narrow) {
-    .trans {
-        &__form {
-            button {
-                position: relative;
-            }
+    button {
+        @include btn;
+        &.disable {
+            @include btn($clrS1);
+            cursor: not-allowed;
         }
     }
-}
-
-@media (min-width: $break-normal) {
-}
-
-@media (min-width: $break-wide) {
 }

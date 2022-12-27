@@ -1,8 +1,5 @@
 .contact-page {
-    @include flex(row, start);
-    width: 100%;
-    padding: 10px 24px;
-    gap: 16px;
+    @include black-row;
 
     &__img {
         border-radius: 50%;
@@ -18,12 +15,4 @@
         }
     }
 
-    &:hover {
-        background-color: $clrB2;
-    }
-
-    border-bottom: 1px solid $clrN2;
-    &:last-of-type {
-        border: none;
-    }
 }

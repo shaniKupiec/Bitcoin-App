@@ -14,6 +14,7 @@ export class _ContactDetailsPage extends Component {
   state = {
     contact: null,
     loggedInUser: null,
+    showTransCmp: false,
   };
 
   componentDidMount() {
@@ -49,7 +50,7 @@ export class _ContactDetailsPage extends Component {
   };
 
   render() {
-    const { contact, loggedInUser } = this.state;
+    const { contact, loggedInUser, showTransCmp } = this.state;
     if (!loggedInUser || !contact) return <div>Loading...</div>;
     return contact ? (
       <main className="details-cmp add-margin">
@@ -59,24 +60,27 @@ export class _ContactDetailsPage extends Component {
             <i className="fa-solid fa-pen-to-square" title="Edit"></i>
           </Link>
         </div>
-        <section className="contact-det">
-          <img src={`https://robohash.org/set_set5/${contact._id}.png`} alt="" className="contact-det__img" />
-          <section className="details">
-            <div className="details__name">{contact.name}</div>
-            <div className="details__info">
-              <div className="details__info__row">
-                <i className="fa-solid fa-envelope icon"></i>
-                <span>{contact.email}</span>
-              </div>
-              <div className="details__info__row">
-                <i className="fa-solid fa-phone icon"></i>
-                <span>{contact.phone}</span>
-              </div>
-            </div>
-          </section>
+        <section className="contact-det1">
+          <img src={`https://robohash.org/set_set5/${contact._id}.png`} alt="" className="contact-det1__img" />
+          <section className="details">{contact.name}</section>
         </section>
+        <div className="contact-det2">
+          <div className="row">
+            <i className="fa-solid fa-envelope icon"></i>
+            <span>{contact.email}</span>
+          </div>
+          <div className="row">
+            <i className="fa-solid fa-phone icon"></i>
+            <span>{contact.phone}</span>
+          </div>
+        </div>
 
-        <TransferFund contact={this.state.contact} maxCoins={loggedInUser.coins} onTransferCoins={this.onTransferCoins} />
+        {
+          showTransCmp ? 
+          <TransferFund contact={this.state.contact} maxCoins={loggedInUser.coins} onTransferCoins={this.onTransferCoins} />
+          :
+          <button className="add-trans" onClick={() => this.setState({ showTransCmp: true })}>Add Transaction</button>
+        }
         <MoveList movesList={loggedInUser.moves.filter((m) => m.toId === contact._id)} title="My Moves" />
       </main>
     ) : (

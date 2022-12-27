@@ -1,34 +1,37 @@
-import { Component } from 'react'
+import { Component } from "react";
+
+import bitcoinTitle from '../assets/images/bitcoin-title.png'
 
 export class TransferFund extends Component {
   state = {
     amount: 0,
-  }
+  };
 
   handleChange = ({ target }) => {
-    const field = target.name
-    const value = target.type === 'number' ? +target.value || '' : target.value
-    this.setState({ [field]: value })
-  }
+    const field = target.name;
+    const value = target.type === "number" ? +target.value || "" : target.value;
+    this.setState({ [field]: value });
+  };
 
   onTransferCoins = () => {
-    this.props.onTransferCoins(this.state.amount)
-  }
+    this.props.onTransferCoins(this.state.amount);
+  };
 
   render() {
-    const { amount } = this.state
-    console.log('amount',amount)
-    const className = amount === 0 ? 'disable' : ''
-    console.log('className',className)
+    const { amount } = this.state;
+    var className = amount === 0 ? "disable" : "";
+    className += this.props.maxCoins - amount < 0 ? "disable" : "";
     return (
       <section className="trans">
-        <div className='trans__title'>Transfer coins to {this.props.contact.name}:</div>
-        <div className="trans__form">
-          <label htmlFor="amount">Amount:</label>
+        <div className="trans__input">
           <input type="number" min="0" max={this.props.maxCoins} onChange={this.handleChange} id="amount" name="amount" value={amount} />
-          <button onClick={this.onTransferCoins} className={className}>Transfer</button>
+          <img src={bitcoinTitle} alt="" />
+          <span>Bitcoin</span>
         </div>
+        <button onClick={this.onTransferCoins} className={className}>
+          Transfer
+        </button>
       </section>
-    )
+    );
   }
 }
