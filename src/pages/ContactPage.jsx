@@ -7,6 +7,8 @@ import { ContactList } from "../components/ContactList";
 
 import { loadContacts, setFilterBy } from "../store/actions/contactActions";
 
+import plusButton from "../assets/images/buttons/plus.png";
+
 export class _ContactPage extends Component {
   componentDidMount() {
     this.props.loadContacts();
@@ -26,7 +28,7 @@ export class _ContactPage extends Component {
           <ContactFilter onChangeFilter={this.onChangeFilter} filterBy={this.props.filterBy} />
           <ContactList contacts={contacts} />
           <Link className="add-btn" to="/contact/edit/">
-            +
+            <img src={plusButton} alt="" />
           </Link>
         </main>
     );

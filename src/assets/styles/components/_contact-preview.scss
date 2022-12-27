@@ -1,67 +1,29 @@
 .contact-page {
-    @include flex(column);
-    cursor: pointer;
-    padding: 20px;
-    gap: 10px;
+    @include flex(row, start);
+    width: 100%;
+    padding: 10px 24px;
+    gap: 16px;
 
     &__img {
         border-radius: 50%;
-        box-shadow: 0px 0px 10px 0px $shadowClr;
-        width: 126px;
-        transition: background-color 0.2s;
+        width: 36px;
     }
 
-    &__name {
-        font-size: rem(20px);
-        .phone{
-            display: none;
+    &__info {
+        @include flex(column);
+        font-size: 14px;
+        .phone {
+            font-size: 12px;
+            color: $clrN3;
         }
     }
 
-    &:hover &__img {
-        background-color: $clr2;
+    &:hover {
+        background-color: $clrB2;
     }
-}
 
-@media (max-width: $break-narrow) {
-    .contact {
-        @include flex(row, flex-start);
-        padding: 5px 20px;
-        width: 100%;
-        border-radius: 50px;
-        background-color: $clr2;
-
-        &__img {
-            width: 50px;
-            box-shadow: none;
-        }
-
-        &__name {
-            .phone{
-                font-size: rem(16px);
-                display: block;
-            }
-        }
-
-        &:hover &__img {
-            background: none;
-        }
+    border-bottom: 1px solid $clrN2;
+    &:last-of-type {
+        border: none;
     }
 }
-
-@media (min-width: $break-normal) {
-    .contact {
-        &__img {
-            width: 154px;
-        }
-    }
-}
-
-@media (min-width: $break-wide) {
-    .contact {
-        &__img {
-            width: 228px;
-        }
-    }
-}
-

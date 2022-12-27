@@ -40,7 +40,7 @@ export const HomePage = (props) => {
 
   if (!rate || !loggedInUser) return <div>Loading...</div>;
   return (
-    <main className="home-page">
+    <main className="home-page add-margin">
       <section className="card">
         <img src={balanceCard} alt="" className="card__img" />
         <div className="card__row title">Total Balance</div>

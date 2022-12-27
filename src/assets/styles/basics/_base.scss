@@ -17,8 +17,10 @@ body {
   @include flex(column, space-between);
 
   main{
-    margin: rem(24px);
     @include flex(column);
+    &.add-margin{
+      margin: 0 $marginSides;
+    }
   }
 }
 

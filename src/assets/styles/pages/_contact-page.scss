@@ -1,12 +1,7 @@
 .add-btn{
+    align-self: flex-end;
     position: fixed;
-    right: 60px;
-    bottom: 60px;
-    border-radius: 50%;
-    background-color: $clr3;
-    font-size: xxx-large;
-    width: rem(70px);
-    height: rem(70px);
-    @include flex();
-    font-weight: 700;
+    bottom: 110px;
+    width: 52px;
+    margin-inline-end: $marginSides;
 }
