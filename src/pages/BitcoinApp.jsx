@@ -40,8 +40,7 @@ export const BitcoinApp = (props) => {
 
   return (
     <Router>
-      <div>{key}</div>
-      <AppHeader />
+      {/* <div>{key}</div> */}
       <Switch>
         <PrivateRoute path="/contact/edit/:id?" component={ContactEditPage} />
         <PrivateRoute path="/contact/:id" component={ContactDetailsPage} />
@@ -50,6 +49,7 @@ export const BitcoinApp = (props) => {
         <Route path="/signup" component={SignUpPage} />
         <PrivateRoute path="/" component={HomePage} />
       </Switch>
+      <AppHeader />
     </Router>
   );
 };
