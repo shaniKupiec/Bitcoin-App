@@ -1,11 +1,42 @@
 .home-page{
-    padding: 40px;
+   .card{
+    position: relative;
+    &__row{
+        padding-inline-start: rem(24px);
+        position:absolute;
+    }
+    .title{
+        color: $clrN2;
+        top: rem(32px);
+        font-size: rem(14px);
+    }
+    
+    .balance{
+        // font-family: semibold;
+        color: $clrN1;
+        font-size: rem(32px);
+        top: rem(51px);
+        font-weight: bold;
+    }
+    
+    .footer{
+        color: $clrN2;
+        font-size: rem(12px);
+        bottom: rem(22px);
+        @include flex();
+        gap: rem(4px);
+        
+        &__icon{
+            width: 16px;
+            
+        }
+        &__profit{
+            margin-inline-end: rem(4px);
 
-    &__bitcoin{
-        margin-top: 20px;
+        }
+        &__title{
 
-        &__num{
-            font-size: rem(50px);
         }
     }
+   }
 }

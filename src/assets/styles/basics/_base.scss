@@ -14,7 +14,11 @@ body {
 
 .app{
   background-color: $clrB1;
-  @include flex(column, space-between)
+  @include flex(column, space-between);
+
+  main{
+    margin: rem(24px);
+  }
 }
 
 h1,

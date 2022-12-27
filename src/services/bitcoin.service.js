@@ -26,6 +26,7 @@ async function getRate(coins = 1) {
   try {
     var res = await axios.get(getRateUrl)
     res = res.data
+    res = Number.parseFloat(1 / +res).toFixed(2)
     gRateCache = res
     storageService.save(RATE_KEY, gRateCache)
     return res * coins

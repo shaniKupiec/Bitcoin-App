@@ -25,7 +25,7 @@ export const BitcoinApp = (props) => {
   
   useEffect(() => {
     console.log('userModule changed!', loggedInUser);
-    setKey(prevState => prevState + 1)
+    // setKey(prevState => prevState + 1)
     // setLoggedInUser(useSelector((state) => state.userModule).loggedUser)
   }, [loggedInUser]);
 
@@ -42,14 +42,13 @@ export const BitcoinApp = (props) => {
     <section className="app">
 
     <Router>
-      {/* <div>{key}</div> */}
       <Switch>
         <PrivateRoute path="/contact/edit/:id?" component={ContactEditPage} />
         <PrivateRoute path="/contact/:id" component={ContactDetailsPage} />
         <PrivateRoute path="/contact" component={ContactPage} />
         <PrivateRoute path="/chart" component={StatisticPage} />
         <Route path="/signup" component={SignUpPage} />
-        <PrivateRoute path="/" component={HomePage} />
+        <PrivateRoute path="/" component={HomePage} className="main"/>
       </Switch>
       <AppHeader />
     </Router>
