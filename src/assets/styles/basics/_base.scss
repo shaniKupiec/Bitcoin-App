@@ -18,6 +18,7 @@ body {
 
   main{
     margin: rem(24px);
+    @include flex(column);
   }
 }
 

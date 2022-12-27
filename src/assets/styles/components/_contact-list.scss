@@ -1,13 +1,6 @@
 .contact-list{
-    @include flex(row, space-between);
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-@media (max-width: $break-narrow) {
-    .contact-list{
-        @include flex(column);
-        flex-wrap: nowrap;
-    }
+    @include flex(row);
+    flex-wrap: wrap; 
+    // gap: 20px;
+    // margin-top: 20px;
 }

@@ -19,7 +19,7 @@ header {
         &__icon {
             background-image: url("../../images/icons/home.png");
         }
-        &:hover {
+        &:hover, &.active {
             .home__icon {
                 background-image: url("../../images/icons/home-orange.png");
             }
@@ -30,7 +30,7 @@ header {
         &__icon {
             background-image: url("../../images/icons/contact.png");
         }
-        &:hover {
+        &:hover, &.active {
             .contact__icon {
                 background-image: url("../../images/icons/contact-orange.png");
             }
@@ -41,7 +41,7 @@ header {
         &__icon {
             background-image: url("../../images/icons/chart.png");
         }
-        &:hover {
+        &:hover, &.active {
             .chart__icon {
                 background-image: url("../../images/icons/chart-orange.png");
             }
