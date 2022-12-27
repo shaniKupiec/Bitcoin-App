@@ -1,0 +1,50 @@
+.sign-up-page {
+    @include flex(column);
+
+    .illustrations {
+        animation-name: illustrations;
+        animation-duration: 18s;
+        animation-iteration-count: infinite;
+
+        width: 375px;
+        height: 375px;
+
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        // position: absolute;
+    }
+
+    .title {
+        font-size: rem(32px);
+        padding: rem(32px) rem(24px);
+        span {
+            color: $clrP1;
+        }
+    }
+
+    .explore {
+        align-self: flex-end;
+        background-color: $clrP1;
+        color: $clrN1;
+        margin-inline-end: rem(23px);
+        padding: 8px;
+        border-radius: 20px;
+        @include flex();
+        gap: rem(5px);
+        transition: all 0.3s ease-out;
+        width: 72px;
+        
+        &__icon {
+            width: 15px;
+            height: 15px;
+            background-image: url("../../images/icons/arrow-right.png");
+            background-size: cover;
+        }
+
+        &:hover {
+            width: 87px;
+            transition: all 0.3s ease-in;
+        }
+    }
+}
