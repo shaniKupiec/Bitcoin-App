@@ -7,7 +7,7 @@ import greenArrow from "../assets/images/icons/green-arrow.png";
 import redArrow from "../assets/images/icons/red-arrow.png";
 
 // import { MoveList } from "../components/MoveList";
-import bitcoinService from "../services/bitcoin.service";
+import cryptoService from "../services/crypto.service";
 
 export const HomePage = (props) => {
   const { loggedInUser } = useSelector((state) => state.userModule);
@@ -25,7 +25,7 @@ export const HomePage = (props) => {
 
   const loadRate = async () => {
     console.log("loadRate", loggedInUser);
-    var rate1 = await bitcoinService.getRate(loggedInUser?.coins);
+    var rate1 = await cryptoService.getRate(loggedInUser?.coins);
     rate1 = formatNum(rate1);
     setRate(rate1);
   };

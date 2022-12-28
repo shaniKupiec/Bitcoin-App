@@ -12,14 +12,14 @@ export function AppHeader() {
         <div className="contact__icon icon"></div>
         <span>contact</span>
       </NavLink>
-      <NavLink to="/chart" className="chart link">
-        <div className="chart__icon icon"></div>
-        <span>chart</span>
+      <NavLink to="/market" className="market link">
+        <div className="market__icon icon"></div>
+        <span>market</span>
       </NavLink>
-      <NavLink to="/chart" className="chart link">
+      {/* <NavLink to="/" className="chart link">
         <div className="chart__icon icon"></div>
-        <span>chart</span>
-      </NavLink>
+        <span>home</span>
+      </NavLink> */}
     </header>
   );
 }

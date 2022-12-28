@@ -37,6 +37,17 @@ header {
         }
     }
 
+    .market {
+        &__icon {
+            background-image: url("../../images/icons/market.png");
+        }
+        &:hover, &.active {
+            .market__icon {
+                background-image: url("../../images/icons/market-orange.png");
+            }
+        }
+    }
+
     .chart {
         &__icon {
             background-image: url("../../images/icons/chart.png");

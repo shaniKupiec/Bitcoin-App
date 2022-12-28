@@ -1,45 +1,90 @@
-import { React, Component } from 'react'
-import { Sparklines, SparklinesLine, SparklinesBars, SparklinesSpots } from 'react-sparklines'
-import bitcoinService from '../services/bitcoin.service'
+import { React, Component } from "react";
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from "chart.js";
+import { Line } from "react-chartjs-2";
+
+import cryptoService from "../services/crypto.service";
+import dynamicService from "../services/dynamicHistoryRate.service";
+
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 export class Chart extends Component {
   state = {
-    MPdata: null,
-    CTdata: null,
-  }
+    data: null,
+  };
 
   componentDidMount() {
-    this.loadDataMarketPrice()
-    this.loadDataConfirmedTransactions()
+    this.loadRates();
   }
 
-  loadDataMarketPrice = async () => {
-    const data = await bitcoinService.getMarketPrice()
-    var newData = []
-    data.forEach((element) => {
-      // newData.push(element.x)
-      newData.push(element.y)
-    })
-    this.setState({ MPdata: newData })
-  }
+  loadRates = async () => {
+    // const x = await cryptoService.exchangeHistoryBTC();
+    const x = await dynamicService.dynamicRate();
+    // console.log("x", x);
 
-  loadDataConfirmedTransactions = async () => {
-    const data = await bitcoinService.getConfirmedTransactions()
-    var newData = []
-    data.forEach((element) => {
-      // newData.push(element.x)
-      newData.push(element.y)
-    })
-    this.setState({ CTdata: newData })
-  }
+    const data = {
+      labels: ["January", "February", "March", "April", "May", "June", "July"],
+      datasets: [
+        {
+          label: "Dataset 1",
+          data: x,
+          borderColor: "rgb(255, 99, 132)",
+          backgroundColor: "rgba(255, 99, 132, 0.5)",
+        },
+      ],
+    };
+
+    this.setState({ data });
+  };
+
+  options = {
+    responsive: false,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      title: {
+        display: false,
+      },
+    },
+    scales: {
+      y: {
+        display: false,
+      },
+      x: {
+        display: false,
+      },
+    },
+  };
+
+  // loadDataMarketPrice = async () => {
+  //   const data = await cryptoService.getMarketPrice()
+  //   var newData = []
+  //   data.forEach((element) => {
+  //     // newData.push(element.x)
+  //     newData.push(element.y)
+  //   })
+  //   this.setState({ MPdata: newData })
+  // }
+
+  // loadDataConfirmedTransactions = async () => {
+  //   const data = await cryptoService.getConfirmedTransactions()
+  //   var newData = []
+  //   data.forEach((element) => {
+  //     // newData.push(element.x)
+  //     newData.push(element.y)
+  //   })
+  //   this.setState({ CTdata: newData })
+  // }
 
   render() {
-    const { MPdata, CTdata } = this.state
-    const { title, data, description, color } = this.props
-    if (!MPdata || !CTdata) return <div>Loading...</div>
+    const { data } = this.state;
+    // const { title, data, description, color } = this.props
+    if (!data) return <div>Loading...</div>;
     return (
       <section>
-        <div className="chart">
+        <div>hi</div>
+        <Line options={this.options} data={data} />
+        {/* <div className="chart">
           <h1>{title}</h1>
           <h4>{description}</h4>
         {data === 'marketPrice' && (
@@ -53,8 +98,8 @@ export class Chart extends Component {
               <SparklinesBars color={color} />
             </Sparklines>
             )}
-        </div>
+        </div> */}
       </section>
-    )
+    );
   }
 }

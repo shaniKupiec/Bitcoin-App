@@ -6,7 +6,7 @@ import { AppHeader } from "../components/AppHeader";
 import { HomePage } from "./HomePage";
 import { ContactPage } from "./ContactPage";
 import { ContactDetailsPage } from "./ContactDetailsPage";
-import { StatisticPage } from "./StatisticPage";
+import { MarketPage } from "./MarketPage";
 import { ContactEditPage } from "./ContactEditPage";
 import { SignUpPage } from "./SignUpPage";
 
@@ -46,7 +46,7 @@ export const BitcoinApp = (props) => {
         <PrivateRoute path="/contact/edit/:id?" component={ContactEditPage} />
         <PrivateRoute path="/contact/:id" component={ContactDetailsPage} />
         <PrivateRoute path="/contact" component={ContactPage} />
-        <PrivateRoute path="/chart" component={StatisticPage} />
+        <PrivateRoute path="/market" component={MarketPage} />
         <Route path="/signup" component={SignUpPage} />
         <PrivateRoute path="/" component={HomePage} className="main"/>
       </Switch>
