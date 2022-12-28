@@ -1,9 +1,8 @@
 import { React, useEffect, useState } from "react";
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { useDispatch, useSelector } from "react-redux";
 
-import { loadDynamicRate } from "../store/actions/dataActions";
+import dynamicService from "../services/dynamicAPICalls.service";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -14,25 +13,19 @@ export function RatePreview(props) {
   const [currentVal, setCurrentVal] = useState(0);
 
   const { name, shortName, imgSrc, days } = props;
-  const dispatch = useDispatch();
-  const { dynamicRates } = useSelector((state) => state.dataModule);
 
-  useEffect(() => {
-    dispatch(loadDynamicRate(shortName, days));
-  }, []);
-
-  useEffect(() => {
-    dispatch(loadDynamicRate(shortName, days));
-  }, [days]);
 
   useEffect(() => {
     loadRates();
-    // console.log('dynamicRates',dynamicRates)
-  }, [dynamicRates]);
+  }, []);
+
+  useEffect(() => {
+    loadRates();
+  }, [days]);
 
   const loadRates = async () => {
-    let x = dynamicRates[shortName + "-" + days];
-    if(!x) return
+    let x = await dynamicService.dynamicRate(shortName, days);
+
     const previewsValue = x[0].value;
     const todaysValue = x[x.length - 1].value;
     const madeProfitToChange = todaysValue > previewsValue;

@@ -7,7 +7,6 @@ export default {
 };
 
 async function dynamicRate(coin = "BTC", days = "365") {
-
   const RATE_KEY = coin + "-" + days;
   var gCache = storageService.load(RATE_KEY) || null;
 

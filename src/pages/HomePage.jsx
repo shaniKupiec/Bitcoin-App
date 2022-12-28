@@ -1,18 +1,21 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import balanceCard from "../assets/images/balance-card.png";
 import greenArrow from "../assets/images/icons/green-arrow.png";
 import redArrow from "../assets/images/icons/red-arrow.png";
 
-// import { MoveList } from "../components/MoveList";
+import { MoveList } from "../components/MoveList";
 import cryptoService from "../services/crypto.service";
 
 export const HomePage = (props) => {
   const { loggedInUser } = useSelector((state) => state.userModule);
   const [rate, setRate] = useState();
   const [isProfit, setIsProfit] = useState(true);
+
+  const dispatch = useDispatch();
+  const { dynamicRates } = useSelector((state) => state.dataModule);
 
   // useEffect(() => {
   //   console.log("home page started");
@@ -53,7 +56,7 @@ export const HomePage = (props) => {
           <span className="footer__title">Today's Profit</span>
         </div>
       </section>
-      {/* <MoveList movesList={loggedInUser.moves} title="My Moves" /> */}
+      <MoveList movesList={loggedInUser.moves} title="My Moves" />
     </main>
   );
 };

@@ -14,7 +14,7 @@ import polkadotIcon from "../assets/images/cryptoIcons/DOT.png";
 import uniswapIcon from "../assets/images/cryptoIcons/UNI.png";
 
 export function MarketPage() {
-  const [select, setSelect] = useState(365);
+  const [select, setSelect] = useState(1825);
   const selectArray = [
     { days: 7, value: "1W" },
     { days: 30, value: "1M" },
