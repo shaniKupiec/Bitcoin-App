@@ -20,7 +20,7 @@ body {
 
   main {
     @include flex(column);
-    margin-top: 10px;
+    margin: $marginSides 0;
     width: -webkit-fill-available;
     &.add-margin {
       margin: $marginSides;

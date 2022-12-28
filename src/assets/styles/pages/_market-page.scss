@@ -1,5 +1,7 @@
 .market-page {
     @include flex(column);
+    gap: 20px;
+
 
     .select {
         background-color: $clrB2;
@@ -8,7 +10,7 @@
         height: 40px;
         border-radius: 8px;
         @include flex();
-        
+
         div {
             border-radius: 8px;
             padding: 4px 8px;
@@ -18,5 +20,9 @@
                 color: $clrN1;
             }
         }
+    }
+
+    .rates {
+        width: 100%;
     }
 }

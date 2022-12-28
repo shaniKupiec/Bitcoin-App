@@ -5,7 +5,6 @@ export default {
 
 function save(key, val) {
   const str = JSON.stringify(val)
-  console.log('saving value ', val, ' for key ', key);
   localStorage.setItem(key, str)
 }
 

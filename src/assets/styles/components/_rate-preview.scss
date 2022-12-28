@@ -1,0 +1,60 @@
+.rate__preview {
+    @include black-row();
+    justify-content: space-between;
+    gap: 0;
+    color: $clrN5;
+
+    &__icon {
+        width: 36px;
+        margin-inline-end: 16px;
+    }
+
+    &__name {
+        @include flex(column, center, flex-start);
+        gap: 4px;
+        margin-right: auto;
+
+        .full-name {
+            font-family: Poppins-SemiBold;
+            font-size: 14px;
+        }
+
+        .short-name {
+            font-size: 12px;
+            color: $clrN3;
+        }
+    }
+
+    &__chart {
+        margin: auto;
+        width: 75px;
+    }
+
+    &__value {
+        @include flex(column, center, flex-end);
+        gap: 4px;
+
+        .value {
+            font-size: 14px;
+        }
+
+        .percentage {
+            font-size: 12px;
+            color: $clrS1;
+            @include flex();
+            gap: 4px;
+
+            &.madeProfit {
+                color: $clrS2;
+                &::after {
+                    content: "▲";
+                    font-size: 7px;
+                }
+            }
+            &::after {
+                content: "▼";
+                font-size: 7px;
+            }
+        }
+    }
+}
