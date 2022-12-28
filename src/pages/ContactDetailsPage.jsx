@@ -57,7 +57,7 @@ export class _ContactDetailsPage extends Component {
         <div className="details-cmp__btns">
           <img src={arrowLeft} alt="" title="Back" onClick={this.onBack} className="back" />
           <Link to={`/contact/edit/${contact._id}`}>
-            <i className="fa-solid fa-pen-to-square" title="Edit"></i>
+            <i className="fa-solid fa-pen-to-square edit" title="Edit"></i>
           </Link>
         </div>
         <section className="contact-det1">

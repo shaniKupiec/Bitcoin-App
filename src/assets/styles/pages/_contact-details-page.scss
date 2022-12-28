@@ -6,6 +6,9 @@
         @include flex(row, space-between);
         width: 100%;
         cursor: pointer;
+        .edit {
+            color: $clrN4;
+        }
 
         .back {
             width: 20px;
@@ -24,6 +27,7 @@
         .details {
             font-size: rem(18px); 
             margin-bottom: 16px; 
+            font-family: Poppins-SemiBold;
         }
     }
 

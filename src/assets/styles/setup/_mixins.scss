@@ -32,7 +32,7 @@
   font-size: 18px;
   border-radius: 12px;
   height: 48px;
-  font-weight: bold;
+  font-family: Poppins-Bold;
 
   transition: 0.3s;
   
@@ -46,7 +46,7 @@
   background-color: $clrB2;
   color: $clrN5;
   caret-color: $clrP1;
-  border: 0;
+  border: 1px solid $clrB2;
   outline: 0;
   border-radius: 12px;
   padding: 12px;

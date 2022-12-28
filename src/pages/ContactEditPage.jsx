@@ -57,7 +57,7 @@ export class _ContactEditPage extends Component {
   render() {
     const { contact } = this.state;
     return contact ? (
-      <section className="edit-cmp">
+      <main className="edit-cmp add-margin">
         <div className="edit-cmp__btns">
           <img src={arrowLeft} alt="" title="Back" onClick={this.onBack} className="back" />
           {contact._id && <img src={trashIcon} alt="" title="Remove" className="trash" onClick={this.onRemove} />}
@@ -67,23 +67,23 @@ export class _ContactEditPage extends Component {
           <form className="edit" onSubmit={this.onSave}>
             <span className="edit__row">
               <label htmlFor="name">Name:</label>
-              <input type="text" id="name" onChange={this.handleChange} name="name" value={contact.name} />
+              <input type="text" id="name" onChange={this.handleChange} name="name" value={contact.name} placeholder="Name" />
             </span>
 
             <span className="edit__row">
               <label htmlFor="email">Email:</label>
-              <input type="email" id="email" onChange={this.handleChange} name="email" value={contact.email} />
+              <input type="email" id="email" onChange={this.handleChange} name="email" value={contact.email} placeholder="Email" />
             </span>
 
             <span className="edit__row">
               <label htmlFor="phone">Phone:</label>
-              <input type="tel" id="phone" onChange={this.handleChange} name="phone" value={contact.phone} />
+              <input type="tel" id="phone" onChange={this.handleChange} name="phone" value={contact.phone} placeholder="Phone" />
             </span>
 
             <button className="edit__save">Save</button>
           </form>
         </section>
-      </section>
+      </main>
     ) : (
       <div>Loading...</div>
     );

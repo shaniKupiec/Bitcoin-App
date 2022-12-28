@@ -1,6 +1,5 @@
 .edit-cmp {
     @include flex(column);
-    padding: 40px;
     gap: 20px;
 
     &__btns {
@@ -15,76 +14,46 @@
     }
 
     .contact-det {
-        @include flex();
-        gap: 60px;
+        @include flex(column, center, flex-start);
+        gap: 30px;
+        width: 100%;
 
         &__img {
-            width: 200px;
+            width: 70px;
             border-radius: 50%;
+            align-self: center;
         }
 
         .edit {
-            @include flex(column, space-evenly, flex-start);
-            font-size: rem(20px);
+            @include flex(column, center, flex-start);
+            gap: rem(25px);
             height: 100%;
+            width: 100%;
 
             &__row {
-                display: flex;
-                flex-direction: column;
+                @include flex(column, start, flex-start);
+                gap: rem(4px);
+                width: 100%;
+
+                label {
+                    font-size: rem(14px);
+                    font-family: Poppins-SemiBold;
+                }
                 input {
-                    margin-inline-start: 10px;
-                    width: 200px;
+                    width: 100%;
+                    @include input;
+                    padding: rem(10px);
+                    &:focus-visible {
+                        border: 1px solid $clrP1;
+                    }
                 }
             }
 
             &__save {
-                align-self: flex-end;
-            }
-        }
-    }
-}
-
-@media (max-width: $break-narrow) {
-    .edit-cmp {
-        .contact-det {
-            flex-direction: column;
-            align-items: flex-start;
-
-            &__img {
+                @include btn;
+                height: 31px;
                 width: 100px;
-            }
-
-            .edit {
-                padding-inline-start: 30px;
-            }
-        }
-    }
-}
-
-@media (min-width: $break-normal) {
-    .edit-cmp {
-        .contact-det {
-            &__img {
-                width: 250px;
-            }
-
-            .edit {
-                &__row {
-                    flex-direction: row;
-                    input {
-                        width: 300px;
-                    }
-                }
-            }
-        }
-    }
-}
-
-@media (min-width: $break-wide) {
-    .edit-cmp {
-        .contact-det {
-            &__img {
-                width: 300px;
+                align-self: center;
             }
         }
     }
