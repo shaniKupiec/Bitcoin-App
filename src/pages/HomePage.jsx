@@ -8,29 +8,36 @@ import redArrow from "../assets/images/icons/red-arrow.png";
 
 import { MoveList } from "../components/MoveList";
 import cryptoService from "../services/crypto.service";
+import { loadDynamicRate } from "../store/actions/dataActions";
 
 export const HomePage = (props) => {
   const { loggedInUser } = useSelector((state) => state.userModule);
-  const [rate, setRate] = useState();
+  const [coins, setCoins] = useState();
   const [isProfit, setIsProfit] = useState(true);
+  const [profit, setProfit] = useState(true);
 
   const dispatch = useDispatch();
   const { dynamicRates } = useSelector((state) => state.dataModule);
 
-  // useEffect(() => {
-  //   console.log("home page started");
-  //   loadRate();
-  // }, []);
+  useEffect(() => {
+    console.log("home page started");
+    //loadRate();
+    dispatch(loadDynamicRate("BTC", 7));
+  }, []);
 
   useEffect(() => {
     loadRate();
-  }, [loggedInUser]);
+  }, [loggedInUser, dynamicRates]);
 
   const loadRate = async () => {
     console.log("loadRate", loggedInUser);
-    var rate1 = await cryptoService.getRate(loggedInUser?.coins);
-    rate1 = formatNum(rate1);
-    setRate(rate1);
+    let x = dynamicRates["BTC-7"];
+    if (!x) return;
+    const previewsValue = x[0].value;
+    const todaysValue = x[x.length - 1].value;
+    setCoins(loggedInUser.coins * todaysValue)
+    setProfit(todaysValue - previewsValue);
+    setIsProfit(todaysValue - previewsValue > 0)
   };
 
   const formatNum = (rate) => {
@@ -41,27 +48,23 @@ export const HomePage = (props) => {
     return formatter.format(rate);
   };
 
-  if (!rate || !loggedInUser) return <div>Loading...</div>;
+  if (!loggedInUser) return <div>Loading...</div>;
   return (
     <main className="home-page add-margin">
       <section className="card">
         <img src={balanceCard} alt="" className="card__img" />
         <div className="card__row title">Total Balance</div>
-        <div className="card__row balance">
-          {rate}
-        </div>
+        <div className="card__row balance">{formatNum(coins)}</div>
         <div className="card__row footer">
-          <img src={isProfit ? greenArrow : redArrow} alt="" className="footer__icon"/>
-          <span className="footer__profit">{loggedInUser.coins}</span>
-          <span className="footer__title">Today's Profit</span>
+          <img src={isProfit ? greenArrow : redArrow} alt="" className="footer__icon" />
+          <span className="footer__profit">{formatNum(profit)}</span>
+          <span className="footer__title">This Week's { isProfit ? "Profit" : "loss"}</span>
         </div>
       </section>
       <MoveList movesList={loggedInUser.moves} title="My Moves" />
     </main>
   );
 };
-
-
 
 // import Lottie from "react-lottie";
 // import animationData from "../assets/animations/bitcoin.json";
