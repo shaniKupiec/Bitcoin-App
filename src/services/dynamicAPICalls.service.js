@@ -11,7 +11,7 @@ async function dynamicRate(coin = "BTC", days = "365") {
   var gCache = storageService.load(RATE_KEY) || null;
 
   if (gCache) {
-    console.log("getting from cache");
+    // console.log("getting from cache");
     return new Promise((resolve) => resolve(gCache));
   }
   const getUrl = `https://min-api.cryptocompare.com/data/v2/histoday?fsym=${coin}&tsym=USD&limit=${days}`;
@@ -37,7 +37,7 @@ async function dynamicExchangeHistory(coin = "BTC", days = "365") {
   var gCache = storageService.load(RATE_KEY) || null;
 
   if (gCache) {
-    console.log("getting from cache");
+    // console.log("getting from cache");
     return new Promise((resolve) => resolve(gCache));
   }
   const getUrl = `https://min-api.cryptocompare.com/data/exchange/histoday?e=Coinbase&tsym=${coin}&limit=${days}`;

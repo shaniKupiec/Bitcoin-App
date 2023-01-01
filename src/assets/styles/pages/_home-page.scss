@@ -1,41 +1,41 @@
-.home-page{
-   .card{
-    position: relative;
-    &__row{
-        padding-inline-start: rem(24px);
-        position:absolute;
-    }
-    .title{
-        color: $clrN2;
-        top: rem(32px);
-        font-size: rem(14px);
-    }
+.home-page {
+    @include flex(column);
+    gap: rem(32px);
     
-    .balance{
-        font-family: Poppins-SemiBold;
-        color: $clrN1;
-        font-size: rem(32px);
-        top: rem(51px);
-    }
-    
-    .footer{
-        color: $clrN2;
-        font-size: rem(12px);
-        bottom: rem(22px);
-        @include flex();
-        gap: rem(4px);
-        
-        &__icon{
-            width: 16px;
-            
+    .card {
+        position: relative;
+        &__row {
+            padding-inline-start: rem(24px);
+            position: absolute;
         }
-        &__profit{
-            margin-inline-end: rem(4px);
+        .title {
+            color: $clrN2;
+            top: rem(32px);
+            font-size: rem(14px);
+        }
 
+        .balance {
+            font-family: Poppins-SemiBold;
+            color: $clrN1;
+            font-size: rem(32px);
+            top: rem(51px);
         }
-        &__title{
 
+        .footer {
+            color: $clrN2;
+            font-size: rem(12px);
+            bottom: rem(22px);
+            @include flex();
+            gap: rem(4px);
+
+            &__icon {
+                width: 16px;
+            }
+            &__profit {
+                margin-inline-end: rem(4px);
+            }
+            &__title {
+            }
         }
     }
-   }
 }

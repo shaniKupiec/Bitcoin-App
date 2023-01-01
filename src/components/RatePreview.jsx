@@ -27,7 +27,6 @@ export function RatePreview(props) {
 
   useEffect(() => {
     loadRates();
-    // console.log('dynamicRates',dynamicRates)
   }, [dynamicRates]);
 
   const loadRates = async () => {
@@ -124,7 +123,7 @@ export function RatePreview(props) {
       </div>
       <div className="rate__preview__value">
         <span className="value">{currentVal}</span>
-        <span className={["percentage ", madeProfit ? " madeProfit" : ""]}>{percentage + "%"}</span>
+        <span className={`percentage ${madeProfit ? "madeProfit" : ""}`} >{percentage + "%"}</span>
       </div>
     </section>
   );

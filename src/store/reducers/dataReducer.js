@@ -8,7 +8,6 @@ const INITIAL_STATE = {
 export function dataReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case "SET_DYNAMIC_DATA":
-      console.log("action", action);
       const key = action.key;
       const data = action.data;
       return {

@@ -43,7 +43,7 @@ async function getRate(coins = 1) {
 
 async function getRates() {
   if (gRatesCache) {
-    console.log("getting from cache");
+    // console.log("getting from cache");
     return new Promise((resolve) => resolve(gRatesCache));
   }
   const getUrl = `https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,BNB,XRP,ADA,UNI,DOT&tsyms=USD`;

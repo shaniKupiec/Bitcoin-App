@@ -1,24 +1,57 @@
 .moves {
-    @include flex(column);
-    background-color: $clr2;
-    margin: 20px;
-    padding: 20px;
+    @include flex(column, center, flex-start);
+    gap: 20px;
     border-radius: 25px;
+    width: 100%;
+
     &__title {
-        font-size: rem(20px);
-        font-weight: 700px;
-        margin-bottom: 20px;
-        box-shadow: 0px 1px 0px 0px $clr1;
+        font-size: rem(18px);
+        font-family: Poppins-SemiBold;
     }
 
     &__list {
         @include flex();
         flex-wrap: wrap;
-        gap: 40px;
+        width: 100%;
+        gap: 16px;
+        
         &__item {
-            margin-bottom: 10px;
-            span {
-                display: block;
+            @include black-row;
+            border-radius: 20px;
+            background-color: $clrB2;
+            border: none;
+            
+            img {
+                width: 24px;
+            }
+
+            .left {
+                @include flex(column, center, flex-start);
+                gap: 4px;
+                
+                &__name {
+                    font-family: Poppins-SemiBold;
+                }
+                
+                &__date {
+                    font-size: 12px;
+                    font-family: Poppins-Light;
+                    color: $clrN3;
+                }
+            }
+            
+            .value {
+                @include flex(column, flex-end);
+                margin-left: auto;
+
+                &__crypto {
+                    font-size: 12px;
+                    font-family: Poppins-Light;
+                    color: $clrS2;
+                    &.red{
+                        color: $clrS1;
+                    }
+                }
             }
         }
     }

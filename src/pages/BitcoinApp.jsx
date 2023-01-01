@@ -14,7 +14,6 @@ import { loadLoggedInUser } from "../store/actions/userActions";
 
 export const BitcoinApp = (props) => {
   useEffect(() => {
-    console.log('loadLoggedInUser');
     dispatch(loadLoggedInUser());
   }, []);
 
@@ -24,17 +23,14 @@ export const BitcoinApp = (props) => {
 
   
   useEffect(() => {
-    console.log('userModule changed!', loggedInUser);
     // setKey(prevState => prevState + 1)
     // setLoggedInUser(useSelector((state) => state.userModule).loggedUser)
   }, [loggedInUser]);
 
   const PrivateRoute = (props) => {
     if(loggedInUser){
-      console.log('loggedInUser true');
       return <Route {...props} />
     }
-    console.log('loggedInUser false');
     return <Redirect to="/signup" />
   };
 

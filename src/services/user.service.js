@@ -15,7 +15,6 @@ var gUsers = storageService.load(USER_KEY) || [];
 var gLoggedInUser = _loadLoggedInUser()
 
 function getLoggedInUser() {
-  console.log('user.service - gLoggedInUser',gLoggedInUser)
   return gLoggedInUser;
 }
 
@@ -41,6 +40,7 @@ function addMove(contact, amount) {
     to: contact.name,
     at: Date.now(),
     amount,
+    type: 'BTC'
   };
   gLoggedInUser.coins -= amount;
   gLoggedInUser.moves.push(move);

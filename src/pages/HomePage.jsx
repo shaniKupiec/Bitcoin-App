@@ -20,7 +20,6 @@ export const HomePage = (props) => {
   const { dynamicRates } = useSelector((state) => state.dataModule);
 
   useEffect(() => {
-    console.log("home page started");
     //loadRate();
     dispatch(loadDynamicRate("BTC", 7));
   }, []);
@@ -30,7 +29,6 @@ export const HomePage = (props) => {
   }, [loggedInUser, dynamicRates]);
 
   const loadRate = async () => {
-    console.log("loadRate", loggedInUser);
     let x = dynamicRates["BTC-7"];
     if (!x) return;
     const previewsValue = x[0].value;
