@@ -64,10 +64,6 @@ function addMove(contact, amount) {
 // }
 
 function _loadLoggedInUser() {
-  let loggedInUser = storageService.load(LOGGED_IN_USER_KEY) || null
-  // if (!loggedInUser) {
-  //   loggedInUser = gDefaultLoggedInUser
-  //   storageService.save(LOGGED_IN_USER_KEY, gDefaultLoggedInUser)
-  // }
+  let loggedInUser = storageService.load(LOGGED_IN_USER_KEY) || 'no user'
   return loggedInUser
 }

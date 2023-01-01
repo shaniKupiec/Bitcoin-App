@@ -23,27 +23,12 @@ export default function App() {
     dispatch(loadLoggedInUser());
   }, []);
 
-  useEffect(() => {
-    console.log("loggedInUser changed!", loggedInUser);
-    // setKey(prevState => prevState + 1)
-    // setLoggedInUser(useSelector((state) => state.userModule).loggedUser)
-  }, [loggedInUser]);
-
-  // const PrivateRoute = (props) => {
-  //   console.log('loggedInUser',loggedInUser)
-  //   if(loggedInUser){
-  //     console.log('true')
-  //     return <Route {...props} />
-  //   }
-  //   console.log('false')
-  //   return <Navigate to="/signup" replace />
-  // };
-
   const ProtectedRoute = ({ children }) => {
     if (!loggedInUser) {
-      return <Navigate to="/signup" replace />;
+      return;
+    } else if (loggedInUser === "no user") {
+      return <Navigate to="/signup" />;
     }
-
     return children;
   };
 
