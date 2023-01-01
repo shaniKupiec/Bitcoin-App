@@ -43,7 +43,7 @@ function addMove(contact, amount) {
     type: 'BTC'
   };
   gLoggedInUser.coins -= amount;
-  gLoggedInUser.moves.push(move);
+  gLoggedInUser.moves.unshift(move);
 
   const idx = gUsers.findIndex((u) => u.name === gLoggedInUser.name);
   gUsers[idx] = gLoggedInUser;

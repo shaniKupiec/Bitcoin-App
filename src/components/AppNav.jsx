@@ -1,10 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export function AppHeader() {
+export function AppNav() {
   return (
     <header>
-      <NavLink to="/" exact className="home link">
+      <NavLink to="/" className="home link">
         <div className="home__icon icon"></div>
         <span>home</span>
       </NavLink>

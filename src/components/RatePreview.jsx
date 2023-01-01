@@ -19,10 +19,6 @@ export function RatePreview(props) {
 
   useEffect(() => {
     dispatch(loadDynamicRate(shortName, days));
-  }, []);
-
-  useEffect(() => {
-    dispatch(loadDynamicRate(shortName, days));
   }, [days]);
 
   useEffect(() => {

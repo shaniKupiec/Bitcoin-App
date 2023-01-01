@@ -1,7 +1,7 @@
 .home-page {
     @include flex(column);
     gap: rem(32px);
-    
+
     .card {
         position: relative;
         &__row {
@@ -33,8 +33,6 @@
             }
             &__profit {
                 margin-inline-end: rem(4px);
-            }
-            &__title {
             }
         }
     }

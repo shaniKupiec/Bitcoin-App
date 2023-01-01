@@ -14,11 +14,6 @@ export function RatePreview(props) {
 
   const { name, shortName, imgSrc, days } = props;
 
-
-  useEffect(() => {
-    loadRates();
-  }, []);
-
   useEffect(() => {
     loadRates();
   }, [days]);

@@ -1,13 +1,15 @@
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { signUp } from "../store/actions/userActions";
 
 export const SignUpPage = (props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onExplore = () => {
     dispatch(signUp());
-    props.history.push("/");
+    navigate("/");
   };
 
   return (

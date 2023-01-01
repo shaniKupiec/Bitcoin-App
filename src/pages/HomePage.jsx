@@ -7,7 +7,6 @@ import greenArrow from "../assets/images/icons/green-arrow.png";
 import redArrow from "../assets/images/icons/red-arrow.png";
 
 import { MoveList } from "../components/MoveList";
-import cryptoService from "../services/crypto.service";
 import { loadDynamicRate } from "../store/actions/dataActions";
 
 export const HomePage = (props) => {
@@ -54,9 +53,10 @@ export const HomePage = (props) => {
         <div className="card__row title">Total Balance</div>
         <div className="card__row balance">{formatNum(coins)}</div>
         <div className="card__row footer">
-          <img src={isProfit ? greenArrow : redArrow} alt="" className="footer__icon" />
+          {/* <img src={isProfit ? greenArrow : redArrow} alt="" className="footer__icon" />
           <span className="footer__profit">{formatNum(profit)}</span>
-          <span className="footer__title">This Week's { isProfit ? "Profit" : "loss"}</span>
+          <span>This Week's { isProfit ? "Profit" : "loss"}</span> */}
+          BTC: {loggedInUser.coins} coins
         </div>
       </section>
       <MoveList movesList={loggedInUser.moves} title="My Moves" />
