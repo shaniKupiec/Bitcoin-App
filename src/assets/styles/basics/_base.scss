@@ -44,19 +44,19 @@ body {
     height: calc(100vh - 103px);
     overflow-y: auto;
     width: 100%;
-    &:has(.sign-up-page){
+    &:has(.sign-up-page) {
       height: 100vh;
       width: auto;
     }
+  }
+}
 
-    main {
-      @include flex(column);
-      margin: $marginSides 0;
-      width: -webkit-fill-available;
-      &.add-margin {
-        margin: $marginSides;
-      }
-    }
+main {
+  @include flex(column);
+  margin: $marginSides 0;
+  width: -webkit-fill-available;
+  &.add-margin {
+    margin: $marginSides;
   }
 }
 
