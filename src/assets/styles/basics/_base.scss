@@ -5,6 +5,26 @@
 }
 
 html {
+  /* width */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: $clrB1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: $clrN2;
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: $clrN3;
+  }
 }
 
 body {
@@ -20,14 +40,22 @@ body {
   // height: 100vh;
   // overflow-y: auto;
 
-  main {
-    @include flex(column);
-    margin: $marginSides 0;
-    width: -webkit-fill-available;
-    // overflow-y: auto;
-    // height: calc(100vh - 103px - 48px);
-    &.add-margin {
-      margin: $marginSides;
+  .main-container {
+    height: calc(100vh - 103px);
+    overflow-y: auto;
+    width: 100%;
+    &:has(.sign-up-page){
+      height: 100vh;
+      width: auto;
+    }
+
+    main {
+      @include flex(column);
+      margin: $marginSides 0;
+      width: -webkit-fill-available;
+      &.add-margin {
+        margin: $marginSides;
+      }
     }
   }
 }

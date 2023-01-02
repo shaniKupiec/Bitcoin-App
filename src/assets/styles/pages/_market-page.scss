@@ -1,7 +1,5 @@
 .market-page {
-    @include flex(column);
     gap: 20px;
-
 
     .select {
         background-color: $clrB2;

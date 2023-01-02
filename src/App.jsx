@@ -35,52 +35,54 @@ export default function App() {
   return (
     <section className="main-layout">
       <section className="app">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <HomePage />
-              </ProtectedRoute>
-            }
-            className="main"
-          />
-          <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/contact">
+        <section className="main-container">
+          <Routes>
             <Route
-              index
+              path="/"
               element={
                 <ProtectedRoute>
-                  <ContactPage />
+                  <HomePage />
+                </ProtectedRoute>
+              }
+              className="main"
+            />
+            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/contact">
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    <ContactPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path=":id"
+                element={
+                  <ProtectedRoute>
+                    <ContactDetailsPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="edit/:id?"
+                element={
+                  <ProtectedRoute>
+                    <ContactEditPage />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
+            <Route
+              path="/market"
+              element={
+                <ProtectedRoute>
+                  <MarketPage />
                 </ProtectedRoute>
               }
             />
-            <Route
-              path=":id"
-              element={
-                <ProtectedRoute>
-                  <ContactDetailsPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="edit/:id?"
-              element={
-                <ProtectedRoute>
-                  <ContactEditPage />
-                </ProtectedRoute>
-              }
-            />
-          </Route>
-          <Route
-            path="/market"
-            element={
-              <ProtectedRoute>
-                <MarketPage />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
+          </Routes>
+        </section>
         {location.pathname !== "/signup" && <AppNav />}
       </section>
     </section>
