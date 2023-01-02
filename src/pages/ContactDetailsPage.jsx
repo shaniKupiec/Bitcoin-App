@@ -2,11 +2,11 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
-import { getContactById } from "../store/actions/contactActions";
-import { spendBalance } from "../store/actions/userActions";
-
 import { TransferFund } from "../components/TransferFund";
 import { MoveList } from "../components/MoveList";
+
+import { getContactById } from "../store/actions/contactActions";
+import { spendBalance } from "../store/actions/userActions";
 
 import arrowLeft from "../assets/images/icons/arrow-left.png";
 

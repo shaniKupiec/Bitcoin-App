@@ -16,10 +16,6 @@ export function AppNav() {
         <div className="market__icon icon"></div>
         <span>market</span>
       </NavLink>
-      {/* <NavLink to="/" className="chart link">
-        <div className="chart__icon icon"></div>
-        <span>home</span>
-      </NavLink> */}
     </nav>
   );
 }

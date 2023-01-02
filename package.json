@@ -1,6 +1,6 @@
 {
-  "name": "mister-bitcoin",
-  "homepage": "https://shaniKupiec.github.io/Bitcoin-App",
+  "name": "Cryptobits",
+  "homepage": "https://shaniKupiec.github.io",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

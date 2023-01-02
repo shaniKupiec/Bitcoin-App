@@ -2,12 +2,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import balanceCard from "../assets/images/balance-card.png";
-import greenArrow from "../assets/images/icons/green-arrow.png";
-import redArrow from "../assets/images/icons/red-arrow.png";
-
 import { MoveList } from "../components/MoveList";
 import { loadDynamicRate } from "../store/actions/dataActions";
+
+import balanceCard from "../assets/images/balance-card.png";
 
 export const HomePage = (props) => {
   const { loggedInUser } = useSelector((state) => state.userModule);

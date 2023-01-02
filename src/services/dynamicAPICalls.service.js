@@ -3,7 +3,6 @@ import storageService from "./storage.service";
 
 export default {
   dynamicRate,
-  dynamicExchangeHistory,
 };
 
 async function dynamicRate(coin = "BTC", days = "365") {
@@ -32,6 +31,7 @@ async function dynamicRate(coin = "BTC", days = "365") {
   }
 }
 
+// not in use
 async function dynamicExchangeHistory(coin = "BTC", days = "365") {
   const RATE_KEY = coin + "-" + days;
   var gCache = storageService.load(RATE_KEY) || null;

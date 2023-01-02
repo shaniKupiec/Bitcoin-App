@@ -1,8 +1,5 @@
 const INITIAL_STATE = {
   dynamicRates: {},
-  // bitcoinRate: [],
-  // marketPrice: [],
-  // confirmed: [],
 };
 
 export function dataReducer(state = INITIAL_STATE, action) {

@@ -9,8 +9,6 @@ export default {
 const USER_KEY = "user";
 const LOGGED_IN_USER_KEY = "loggedInUser";
 
-// const gDefaultLoggedInUser = { name: "shani", coins: 100, moves: [] }
-
 var gUsers = storageService.load(USER_KEY) || [];
 var gLoggedInUser = _loadLoggedInUser()
 
@@ -53,15 +51,6 @@ function addMove(contact, amount) {
 
   return gLoggedInUser
 }
-
-// function _loadUsers() {
-//   let contacts = storageService.load(STORAGE_KEY)
-//   if (!contacts || !contacts.length) {
-//     contacts = gDefaultContacts
-//     storageService.save(STORAGE_KEY, gDefaultContacts)
-//   }
-//   return contacts
-// }
 
 function _loadLoggedInUser() {
   let loggedInUser = storageService.load(LOGGED_IN_USER_KEY) || 'no user'

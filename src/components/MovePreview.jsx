@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import arrowUpGreen from "../assets/images/icons/arrow-up-green.png";
-import arrowDownRed from "../assets/images/icons/arrow-down-red.png";
 import { getContactById } from "../store/actions/contactActions";
 import { loadDynamicRate } from "../store/actions/dataActions";
+
+import arrowUpGreen from "../assets/images/icons/arrow-up-green.png";
+import arrowDownRed from "../assets/images/icons/arrow-down-red.png";
 
 export function MovePreview({ move }) {
   const { loggedInUser } = useSelector((state) => state.userModule);
