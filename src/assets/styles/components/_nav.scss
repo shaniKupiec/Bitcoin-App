@@ -1,4 +1,4 @@
-header {
+.app-nav {
     @include flex(row, space-evenly);
     padding: rem(25px);
     background-color: #21242d;

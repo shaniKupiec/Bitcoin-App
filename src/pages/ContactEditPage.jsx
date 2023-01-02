@@ -17,10 +17,6 @@ export function ContactEditPage(props) {
     loadContact();
   }, [id]);
 
-  useEffect(() => {
-    console.log('contact changed!',contact)
-  }, [contact]);
-
   const loadContact = async () => {
     const contactForState = id
       ? await dispatch(getContactById(id))
@@ -33,7 +29,6 @@ export function ContactEditPage(props) {
   };
 
   const handleChange = async ({ target }) => {
-    console.log('handleChange', target);
     const field = target.name;
     const value = target.type === "number" ? +target.value || "" : target.value;
     setContact((prevState) => ({ ...prevState, [field]: value }));
@@ -51,6 +46,7 @@ export function ContactEditPage(props) {
   };
 
   const onBack = (toContacts = true) => {
+    console.log('back');
     contact._id && toContacts ? navigate(`/contact/${contact._id}`) : navigate(`/contact`);
   };
 

@@ -17,12 +17,14 @@ body {
 .app {
   background-color: $clrB1;
   @include flex(column, space-between);
+  // height: 100vh;
+  // overflow-y: auto;
 
   main {
     @include flex(column);
     margin: $marginSides 0;
     width: -webkit-fill-available;
-    // overflow-y: scroll;
+    // overflow-y: auto;
     // height: calc(100vh - 103px - 48px);
     &.add-margin {
       margin: $marginSides;

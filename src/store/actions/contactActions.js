@@ -37,7 +37,8 @@ export function removeContact(contactId) {
 export function getContactById(contactId) {
   return async () => {
     try {
-      return await contactService.getById(contactId)
+      const user = await contactService.getById(contactId)
+      return user
     } catch (err) {
       console.log('err:', err)
     }

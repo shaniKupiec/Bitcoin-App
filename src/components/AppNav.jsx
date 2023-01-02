@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export function AppNav() {
   return (
-    <header>
+    <nav className="app-nav">
       <NavLink to="/" className="home link">
         <div className="home__icon icon"></div>
         <span>home</span>
@@ -20,6 +20,6 @@ export function AppNav() {
         <div className="chart__icon icon"></div>
         <span>home</span>
       </NavLink> */}
-    </header>
+    </nav>
   );
 }

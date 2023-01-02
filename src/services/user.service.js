@@ -22,6 +22,7 @@ function signUp(userName = 'Person') {
   var user = gUsers.find((user) => user.name === userName);
   if (!user) {
     user = {
+      _id: _makeId(),
       name: userName,
       coins: 100,
       moves: [],
@@ -37,7 +38,6 @@ function signUp(userName = 'Person') {
 function addMove(contact, amount) {
   const move = {
     toId: contact._id,
-    to: contact.name,
     at: Date.now(),
     amount,
     type: 'BTC'
@@ -66,4 +66,13 @@ function addMove(contact, amount) {
 function _loadLoggedInUser() {
   let loggedInUser = storageService.load(LOGGED_IN_USER_KEY) || 'no user'
   return loggedInUser
+}
+
+function _makeId(length = 10) {
+  var txt = ''
+  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+  for (var i = 0; i < length; i++) {
+    txt += possible.charAt(Math.floor(Math.random() * possible.length))
+  }
+  return txt
 }

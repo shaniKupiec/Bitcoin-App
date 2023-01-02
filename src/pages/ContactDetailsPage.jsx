@@ -28,8 +28,8 @@ export function ContactDetailsPage(props) {
   };
 
   const onBack = () => {
+    console.log('back');
     navigate('/contact')
-    // props.history.push("/contact");
   };
 
   const onTransferCoins = (amount) => {
