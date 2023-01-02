@@ -5,12 +5,13 @@
     &__btns {
         @include flex(row, space-between);
         width: 100%;
-        cursor: pointer;
         .edit {
+            cursor: pointer;
             color: $clrN4;
         }
-
+        
         .back {
+            cursor: pointer;
             width: 20px;
         }
     }

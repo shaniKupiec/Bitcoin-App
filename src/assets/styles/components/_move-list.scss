@@ -14,45 +14,5 @@
         flex-wrap: wrap;
         width: 100%;
         gap: 16px;
-        
-        &__item {
-            @include black-row;
-            border-radius: 20px;
-            background-color: $clrB2;
-            border: none;
-            
-            img {
-                width: 24px;
-            }
-
-            .left {
-                @include flex(column, center, flex-start);
-                gap: 4px;
-                
-                &__name {
-                    font-family: Poppins-SemiBold;
-                }
-                
-                &__date {
-                    font-size: 12px;
-                    font-family: Poppins-Light;
-                    color: $clrN3;
-                }
-            }
-            
-            .value {
-                @include flex(column, flex-end);
-                margin-left: auto;
-
-                &__crypto {
-                    font-size: 12px;
-                    font-family: Poppins-Light;
-                    color: $clrS2;
-                    &.red{
-                        color: $clrS1;
-                    }
-                }
-            }
-        }
     }
 }

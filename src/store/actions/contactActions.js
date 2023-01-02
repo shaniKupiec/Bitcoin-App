@@ -41,6 +41,7 @@ export function getContactById(contactId) {
       return user
     } catch (err) {
       console.log('err:', err)
+      throw err
     }
   }
 }

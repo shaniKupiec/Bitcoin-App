@@ -5,10 +5,10 @@
     &__btns {
         @include flex(row, space-between);
         width: 100%;
-        cursor: pointer;
-
+        
         .back,
         .trash {
+            cursor: pointer;
             width: 20px;
         }
     }

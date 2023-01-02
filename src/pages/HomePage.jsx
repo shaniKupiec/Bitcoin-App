@@ -19,7 +19,6 @@ export const HomePage = (props) => {
   const { dynamicRates } = useSelector((state) => state.dataModule);
 
   useEffect(() => {
-    //loadRate();
     dispatch(loadDynamicRate("BTC", 7));
   }, []);
 
@@ -63,7 +62,3 @@ export const HomePage = (props) => {
     </main>
   );
 };
-
-// import Lottie from "react-lottie";
-// import animationData from "../assets/animations/bitcoin.json";
-// <Lottie options={this.defaultOptions} height={600} width={750} />

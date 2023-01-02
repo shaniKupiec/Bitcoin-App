@@ -4,32 +4,60 @@ import { useDispatch, useSelector } from "react-redux";
 import arrowUpGreen from "../assets/images/icons/arrow-up-green.png";
 import arrowDownRed from "../assets/images/icons/arrow-down-red.png";
 import { getContactById } from "../store/actions/contactActions";
+import { loadDynamicRate } from "../store/actions/dataActions";
 
 export function MovePreview({ move }) {
   const { loggedInUser } = useSelector((state) => state.userModule);
-  const [contact, setContact] = useState();
+  const { dynamicRates } = useSelector((state) => state.dataModule);
   const dispatch = useDispatch();
+  const [contact, setContact] = useState();
+  const [profit, setProfit] = useState(true);
+
 
   useEffect(() => {
     dispatch(getContactById(move.toId)).then((user) => {
       setContact(user);
+    }).catch(() => {
+      setContact({
+        name: 'unknown contact'
+      });
+
     });
+    dispatch(loadDynamicRate(move.type, 1825));
   }, []);
 
+  useEffect(() => {
+    loadRate();
+  }, [dynamicRates]);
+
+  const loadRate = async () => {
+    let x = dynamicRates[move.type + "-1825"];
+    if (!x) return;
+    setProfit(x[10].value * move.amount);
+  };
+
+  const formatNum = (rate) => {
+    var formatter = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+    return formatter.format(rate);
+  };
+
   if (!move || !contact) return;
-  const isMoneyReceived = move.toId === loggedInUser._id
+  const isProfit = move.toId === loggedInUser._id
 
   return (
-    <li key={move.at} className="moves__list__item">
-      <img src={isMoneyReceived ? arrowUpGreen : arrowDownRed} alt="" />
+    <li key={move.at} className="move-preview">
+      <img src={isProfit ? arrowUpGreen : arrowDownRed} alt="" />
       <div className="left">
-        <span className="left__name">{isMoneyReceived ? loggedInUser.name : contact.name}</span>
+        <span className="left__name">{isProfit ? loggedInUser.name : contact.name}</span>
         <span className="left__date">{new Date(move.at).toLocaleString()}</span>
       </div>
       <div className="value">
-        <span> + 16$</span>
-        <span className={`value__crypto ${isMoneyReceived ? "" : "red"}`}>
-          {isMoneyReceived ? "+" : "-"}
+        <span>{isProfit ? "+" : "-"} {formatNum(profit)}</span>
+        <span className={`value__crypto ${isProfit ? "" : "red"}`}>
+          {isProfit ? "+" : "-"}
           {move.amount}
           {" " + move.type}
         </span>

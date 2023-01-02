@@ -7,7 +7,7 @@
     }
 
     &__info {
-        @include flex(column);
+        @include flex(column, center, flex-start);
         font-size: 14px;
         .phone {
             font-size: 12px;
