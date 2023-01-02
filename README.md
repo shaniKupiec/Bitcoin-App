@@ -4,7 +4,7 @@
 
 <p><a href="https://shanikupiec.github.io/Cryptbits-React/" target="blank">Link to Cryptbits</a> </p>
 
-<!-- ![image not found](https://res.cloudinary.com/trellox/image/upload/v1657785931/github%20-%20readme/trellox_jogefx.jpg) -->
+![image not found](https://res.cloudinary.com/trellox/image/upload/v1672667307/github%20-%20readme/Cryptobits_plkdpv.png)
 
 ## Frontend Tech
 - React
