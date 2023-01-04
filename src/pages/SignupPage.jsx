@@ -17,7 +17,7 @@ export const SignUpPage = (props) => {
       <section className="illustrations"></section>
       <section className="bottom">
         <div className="title">
-          Welcome to <span>Crypto</span>bits
+          Welcome to <span>Crypt</span>bits
         </div>
         <div onClick={onExplore} className="explore pointer">
           <span>Explore</span>
