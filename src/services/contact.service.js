@@ -129,7 +129,7 @@ const gDefaultContacts = [
 
 var gContact = _loadContact()
 
-function query(filterBy = null) {
+async function query(filterBy = null) {
   return new Promise((resolve, reject) => {
     var contactsToReturn = gContact;
     if (filterBy && filterBy.term) {
@@ -139,14 +139,14 @@ function query(filterBy = null) {
   })
 }
 
-function getById(id) {
+async function getById(id) {
   return new Promise((resolve, reject) => {
     const contact = gContact.find(contact => contact._id === id)
     contact ? resolve(contact) : reject(`Contact id ${id} not found!`)
   })
 }
 
-function remove(id) {
+async function remove(id) {
   return new Promise((resolve, reject) => {
     const index = gContact.findIndex(contact => contact._id === id)
     if (index !== -1) {
@@ -157,11 +157,11 @@ function remove(id) {
   })
 }
 
-function save(contact) {
+async function save(contact) {
   return contact._id ? _updateContact(contact) : _addContact(contact)
 }
 
-function _updateContact(contact) {
+async function _updateContact(contact) {
   return new Promise((resolve, reject) => {
     const index = gContact.findIndex(c => contact._id === c._id)
     if (index !== -1) {
@@ -172,7 +172,7 @@ function _updateContact(contact) {
   })
 }
 
-function _addContact(contact) {
+async function _addContact(contact) {
   return new Promise((resolve, reject) => {
     contact._id = _makeId()
     gContact.push(contact)
