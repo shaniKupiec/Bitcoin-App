@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { useForm } from "../hooks/useForm";
 
 import { removeContact, saveContact, getContactById } from "../store/actions/contactActions";
 
@@ -10,8 +11,8 @@ import trashIcon from "../assets/images/icons/trash.png";
 export function ContactEditPage(props) {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const [contact, setContact] = useState();
   const navigate = useNavigate();
+  const [contact, handleChange, setContact] = useForm(null)
 
   useEffect(() => {
     loadContact();
@@ -26,12 +27,6 @@ export function ContactEditPage(props) {
           phone: "",
         };
     setContact(contactForState);
-  };
-
-  const handleChange = async ({ target }) => {
-    const field = target.name;
-    const value = target.type === "number" ? +target.value || "" : target.value;
-    setContact((prevState) => ({ ...prevState, [field]: value }));
   };
 
   const onSave = async (ev) => {

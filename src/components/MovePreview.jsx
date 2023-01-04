@@ -14,16 +14,16 @@ export function MovePreview({ move }) {
   const [contact, setContact] = useState();
   const [profit, setProfit] = useState(true);
 
-
   useEffect(() => {
-    dispatch(getContactById(move.toId)).then((user) => {
-      setContact(user);
-    }).catch(() => {
-      setContact({
-        name: 'unknown contact'
+    dispatch(getContactById(move.toId))
+      .then((user) => {
+        setContact(user);
+      })
+      .catch(() => {
+        setContact({
+          name: "unknown contact",
+        });
       });
-
-    });
     dispatch(loadDynamicRate(move.type, 1825));
   }, []);
 
@@ -46,7 +46,7 @@ export function MovePreview({ move }) {
   };
 
   if (!move || !contact) return;
-  const isProfit = move.toId === loggedInUser._id
+  const isProfit = move.toId === loggedInUser._id;
 
   return (
     <li key={move.at} className="move-preview">
@@ -56,7 +56,9 @@ export function MovePreview({ move }) {
         <span className="left__date">{new Date(move.at).toLocaleString()}</span>
       </div>
       <div className="value">
-        <span>{isProfit ? "+" : "-"} {formatNum(profit)}</span>
+        <span>
+          {isProfit ? "+" : "-"} {formatNum(profit)}
+        </span>
         <span className={`value__crypto ${isProfit ? "" : "red"}`}>
           {isProfit ? "+" : "-"}
           {move.amount}
