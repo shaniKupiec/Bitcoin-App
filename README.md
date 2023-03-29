@@ -21,5 +21,5 @@
 - A graph that displays the market value of 10 different crypto coins for 5 different periods of time
 - Enables you to send crypto to your (fake) contacts
 - Profit and loss analysis based on time and cryptocurrency
-- Caching the data recives from API 
+- Caching the data receives from API 
 - Developed using Figma's community designs <a href="https://www.figma.com/community/file/1147402245634536123" target="blank">link to original design </a>
