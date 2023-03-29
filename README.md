@@ -1,6 +1,6 @@
 # Cryptbits
 
-<p>With Cryptobits, you can transfer crypto coins. Using Cryptobits, you can send and receive cryptocurrency. Additionally, you can view how the value of different crypto coins has changed over time in addition to real-time value information</p>
+<p>With Cryptbits, you can transfer crypto coins. Using Cryptbits, you can send and receive cryptocurrency. Additionally, you can view how the value of different crypto coins has changed over time in addition to real-time value information</p>
 
 <p><a href="https://shanikupiec.github.io/Cryptbits-React/" target="blank">Link to Cryptbits</a> </p>
 
